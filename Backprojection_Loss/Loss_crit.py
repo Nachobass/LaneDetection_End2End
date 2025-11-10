@@ -61,7 +61,9 @@ def define_loss_crit(options):
         loss_crit = Area_Loss(options.order, options.weight_funct)
     else:
         return NotImplementedError('The requested loss criterion is not implemented')
-    weights = (torch.Tensor([1] + [options.weight_seg]*(options.nclasses))).cuda()
+    weights = torch.Tensor([1] + [options.weight_seg]*(options.nclasses))
+    if not options.no_cuda:
+        weights = weights.cuda()
     loss_seg = nn.CrossEntropyLoss(weights)
     # loss_seg = CrossEntropyLoss2d(seg=True, nclasses=options.nclasses, weight=options.weight_seg)
     return loss_crit, loss_seg
@@ -73,10 +75,11 @@ class CrossEntropyLoss2d(nn.Module):
     My implemetation (but since Pytorch 0.2.0 libs have their
     owm optimized implementation, consider using theirs)
     '''
-    def __init__(self, weight=None, size_average=True, seg=False, nclasses=2):
+    def __init__(self, weight=None, size_average=True, seg=False, nclasses=2, no_cuda=False):
         if seg:
             weights = torch.Tensor([1] + [weight]*(nclasses))
-            weights = weights.cuda()
+            if not no_cuda:
+                weights = weights.cuda()
         super(CrossEntropyLoss2d, self).__init__()
         self.nll_loss = nn.NLLLoss2d(weights, size_average)
 

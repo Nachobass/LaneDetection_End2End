@@ -106,8 +106,11 @@ def main():
 
     # Define loss criteria for multiple tasks
     criterion, criterion_seg = define_loss_crit(args)
-    criterion_horizon = nn.BCEWithLogitsLoss().cuda()
-    criterion_line_class = nn.BCEWithLogitsLoss().cuda()
+    criterion_horizon = nn.BCEWithLogitsLoss()
+    criterion_line_class = nn.BCEWithLogitsLoss()
+    if not args.no_cuda:
+        criterion_horizon = criterion_horizon.cuda()
+        criterion_line_class = criterion_line_class.cuda()
 
     # Name
     global crit_string
@@ -187,12 +190,14 @@ def main():
         # validate(valid_loader, model, criterion, criterion_seg, 
                 # criterion_line_class, criterion_horizon)
 
-        if args.clas:
+        if args.clas and test_loader is not None:
             test_model(test_loader, model, 
                        criterion, 
                        criterion_seg, 
                        criterion_line_class, 
                        criterion_horizon, args)
+        elif args.clas and test_loader is None:
+            print("Warning: test_loader is None, skipping test_model evaluation")
         return
 
     # Start training from clean slate
@@ -319,8 +324,8 @@ def main():
 
             # Horizon task & Line classification task
             if args.clas:
-                gt_horizon, gt_line = gt_horizon.cuda(), \
-                                      gt_line.cuda()
+                if not args.no_cuda:
+                    gt_horizon, gt_line = gt_horizon.cuda(), gt_line.cuda()
                 loss_horizon = criterion_horizon(outputs_horizon, gt_horizon).double()
                 loss_line = criterion_line_class(outputs_line, gt_line).double()
                 loss = loss*args.weight_fit + (loss_line + loss_horizon)*args.weight_class
@@ -383,13 +388,15 @@ def main():
         total_score = losses_valid
 
         # TODO get acc
-        if args.clas:
+        if args.clas and test_loader is not None:
             metric = test_model(test_loader, model, 
                        criterion, 
                        criterion_seg, 
                        criterion_line_class, 
                        criterion_horizon, args)
             total_score = metric
+        elif args.clas and test_loader is None:
+            print("Warning: test_loader is None, using validation loss as total_score")
 
 
         # Adjust learning_rate if loss plateaued
@@ -486,8 +493,8 @@ def validate(loader, model, criterion, criterion_seg,
 
             # Horizon task & Line classification task
             if args.clas:
-                gt_horizon, gt_line = gt_horizon.cuda(), \
-                                      gt_line.cuda()
+                if not args.no_cuda:
+                    gt_horizon, gt_line = gt_horizon.cuda(), gt_line.cuda()
                 horizon_pred = torch.round(nn.Sigmoid()(outputs_horizon))
                 acc = torch.eq(horizon_pred, gt_horizon)
                 acc_hor = torch.sum(acc).float()/(args.resize*args.val_batch_size)

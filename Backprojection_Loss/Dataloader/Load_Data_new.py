@@ -20,7 +20,12 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import torchvision.transforms.functional as F
 from torch.utils.data.dataloader import default_collate
-warnings.simplefilter('ignore', np.RankWarning)
+# Handle numpy RankWarning compatibility (removed in numpy 1.20+)
+try:
+    warnings.simplefilter('ignore', np.RankWarning)
+except AttributeError:
+    # RankWarning was removed in newer numpy versions, ignore the error
+    pass
 from torch.utils.data.sampler import Sampler
 
 
@@ -28,6 +33,10 @@ from torch.utils.data.sampler import Sampler
 
 def get_testloader(path, batch_size, num_workers, resize=256):
     json_file = os.path.join(path, 'test_label.json')
+    # Return None if test directory doesn't exist
+    if not os.path.exists(path) or not os.path.exists(json_file):
+        print(f"Warning: Test directory {path} or test_label.json not found. Skipping test loader.")
+        return None
     transformed_dataset = LaneTestSet(gt_file=json_file,
                                       path=path,
                                       resize=resize)
@@ -92,7 +101,9 @@ class LaneDataset(Dataset):
         self.rgb_lst = sorted(os.listdir(image_dir))
         self.gt_lst = sorted(os.listdir(gt_dir))
         self.num_imgs = len(self.rgb_lst)
-        assert len(self.rgb_lst) == len(self.gt_lst) == 3626
+        # Support both 2535 (subset) and 3626 (full) dataset sizes
+        assert len(self.rgb_lst) == len(self.gt_lst), f"Mismatch: {len(self.rgb_lst)} images vs {len(self.gt_lst)} ground truth files"
+        assert len(self.rgb_lst) in [2535, 3626], f"Expected 2535 or 3626 images, got {len(self.rgb_lst)}"
 
         target_idx = [int(i.split('.')[0]) for i in self.rgb_lst]
         self.valid_idx = [target_idx[i]-1 for i in valid_idx]
