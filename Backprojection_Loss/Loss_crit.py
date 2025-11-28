@@ -58,7 +58,10 @@ def define_loss_crit(options):
     elif options.loss_policy == 'backproject':
         loss_crit = backprojection_loss(options)
     elif options.loss_policy == 'area':
-        loss_crit = Area_Loss(options.order, options.weight_funct)
+        loss_crit = Area_Loss(options.order, options.weight_funct, 
+                              resize=options.resize, 
+                              no_mapping=options.no_mapping,
+                              no_cuda=options.no_cuda)
     else:
         return NotImplementedError('The requested loss criterion is not implemented')
     weights = torch.Tensor([1] + [options.weight_seg]*(options.nclasses))
@@ -76,12 +79,14 @@ class CrossEntropyLoss2d(nn.Module):
     owm optimized implementation, consider using theirs)
     '''
     def __init__(self, weight=None, size_average=True, seg=False, nclasses=2, no_cuda=False):
+        super(CrossEntropyLoss2d, self).__init__()
         if seg:
             weights = torch.Tensor([1] + [weight]*(nclasses))
             if not no_cuda:
                 weights = weights.cuda()
-        super(CrossEntropyLoss2d, self).__init__()
-        self.nll_loss = nn.NLLLoss2d(weights, size_average)
+            self.nll_loss = nn.NLLLoss2d(weights, size_average)
+        else:
+            self.nll_loss = nn.NLLLoss2d(weight, size_average)
 
     def forward(self, inputs, targets):
         return self.nll_loss(F.log_softmax(inputs, dim=1), targets[:, 0, :, :])
@@ -102,16 +107,215 @@ class Area_Loss(nn.Module):
             *(1-y)
             *(1-y**0.5)
     '''
-    def __init__(self, order, weight_funct):
+    def __init__(self, order, weight_funct, resize=256, no_mapping=False, no_cuda=False):
         super(Area_Loss, self).__init__()
         self.order = order
         self.weight_funct = weight_funct
+        self.resize = resize
+        self.no_mapping = no_mapping
+        self.no_cuda = no_cuda
+        
+        # Get homography matrix for transforming coordinates to ortho view
+        M, _ = get_homography(resize, no_mapping)
+        # Store as double to match the dtype of coordinates (gt_params is double)
+        self.M = torch.from_numpy(M).double()
+        if not no_cuda:
+            self.M = self.M.cuda()
 
-    def forward(self, params, gt_params, compute=True):
-        diff = params.squeeze(-1) - gt_params
+    def _transform_to_ortho_view(self, x_coords, y_coords):
+        """
+        Transform coordinates from normal view to ortho (birds-eye) view using homography.
+        Args:
+            x_coords: [batch_size, num_points] x coordinates in normal view (resized)
+            y_coords: [batch_size, num_points] y coordinates in normal view (resized)
+        Returns:
+            x_ortho: [batch_size, num_points] x coordinates in ortho view
+            y_ortho: [batch_size, num_points] y coordinates in ortho view
+        """
+        batch_size = x_coords.size(0)
+        num_points = x_coords.size(1)
+        device = x_coords.device
+        dtype = x_coords.dtype
+        
+        # Reshape for batch matrix multiplication
+        # Stack coordinates as homogeneous coordinates: [batch_size, 3, num_points]
+        ones = torch.ones(batch_size, num_points, dtype=dtype, device=device)
+        coords = torch.stack([x_coords, y_coords, ones], dim=1)  # [batch_size, 3, num_points]
+        
+        # Transform using homography M (normal -> ortho)
+        # M: [3, 3], coords: [batch_size, 3, num_points]
+        M_batch = self.M.unsqueeze(0).expand(batch_size, -1, -1)  # [batch_size, 3, 3]
+        coords_ortho = torch.bmm(M_batch, coords)  # [batch_size, 3, num_points]
+        
+        # Normalize homogeneous coordinates
+        x_ortho = coords_ortho[:, 0, :] / coords_ortho[:, 2, :]
+        y_ortho = coords_ortho[:, 1, :] / coords_ortho[:, 2, :]
+        
+        return x_ortho, y_ortho
+
+    def _fit_polynomial_coefficients(self, x_coords, y_coords, valid_mask):
+        """
+        Fit polynomial coefficients from x, y coordinates using least squares.
+        Args:
+            x_coords: [batch_size, num_points] x coordinates in ortho view
+            y_coords: [batch_size, num_points] y coordinates in ortho view
+            valid_mask: [batch_size, num_points] mask for valid points
+        Returns:
+            coeffs: [batch_size, order+1] polynomial coefficients
+        """
+        batch_size = x_coords.size(0)
+        device = x_coords.device
+        dtype = x_coords.dtype
+        
+        coeffs_list = []
+        for i in range(batch_size):
+            # Get valid points for this sample
+            valid = valid_mask[i].bool()
+            if valid.sum() < (self.order + 1):
+                # Not enough points, return zero coefficients
+                coeffs_list.append(torch.zeros(self.order + 1, dtype=dtype, device=device))
+                continue
+            
+            x_valid = x_coords[i][valid]
+            y_valid = y_coords[i][valid]
+            
+            # Apply the same y coordinate transformation as the model
+            # Model uses: y_map = (255 - grid[:, :, 1]) where grid y is in ortho view
+            # The grid is created with y in [0, H-1] where H=resize, so for resize=256: [0, 255]
+            # After transformation to ortho view, grid y is still roughly in [0, resize-1] range
+            # So y_map = (255 - y_ortho) for resize=256
+            # The model hardcodes 255, so we'll use that for consistency
+            y_map = 255.0 - y_valid  # Match model's y_map computation (hardcoded 255)
+            # y_map is in [0, 255] range
+            
+            # Fit polynomial using y_map directly (not normalized) to match the model's coordinate system
+            # The model fits: x = a*y_map^2 + b*y_map + c where y_map is in [0, 255]
+            # We'll convert to normalized space later in the forward function
+            if self.order == 0:
+                Y = torch.ones(len(x_valid), 1, dtype=dtype, device=device)
+            elif self.order == 1:
+                Y = torch.stack([y_map, torch.ones(len(x_valid), dtype=dtype, device=device)], dim=1)
+            elif self.order == 2:
+                Y = torch.stack([y_map**2, y_map, torch.ones(len(x_valid), dtype=dtype, device=device)], dim=1)
+            elif self.order == 3:
+                Y = torch.stack([y_map**3, y_map**2, y_map, torch.ones(len(x_valid), dtype=dtype, device=device)], dim=1)
+            else:
+                raise NotImplementedError(f'Order {self.order} not implemented')
+            
+            # Solve least squares: Y * coeffs = x
+            try:
+                YtY = torch.mm(Y.t(), Y)
+                # Add small regularization to avoid singular matrix
+                reg = torch.eye(YtY.size(0), dtype=dtype, device=device) * 1e-6
+                YtY_reg = YtY + reg
+                Ytx = torch.mm(Y.t(), x_valid.unsqueeze(1))
+                coeffs = torch.mm(torch.inverse(YtY_reg), Ytx).squeeze(1)
+            except:
+                # If matrix is singular, use zero coefficients
+                coeffs = torch.zeros(self.order + 1, dtype=dtype, device=device)
+            
+            coeffs_list.append(coeffs)
+        
+        return torch.stack(coeffs_list, dim=0)
+
+    def forward(self, params, gt_params, valid_samples=None):
+        # params: [batch_size, order+1] or [batch_size, order+1, 1] - predicted polynomial coefficients
+        params = params.squeeze(-1) if params.dim() > 2 else params
+        
+        # Check if gt_params are coordinates (size > order+1) or coefficients (size == order+1)
+        if gt_params.size(1) > (self.order + 1):
+            # gt_params are raw coordinates, need to fit polynomial coefficients
+            # gt_params: [batch_size, num_points] x coordinates
+            # valid_samples: [batch_size, num_points] mask for valid points
+            
+            if valid_samples is None:
+                # Assume all non-negative/non-zero points are valid
+                valid_samples = (gt_params > 0).double()
+            
+            # Get y coordinates (h_samples) - these should match the sampling used in dataloader
+            # The y coordinates are fixed based on the dataset format
+            num_points = gt_params.size(1)
+            # h_samples from JSON are originally [240, 250, 260, ..., 710] (48 points)
+            # The dataloader pads lanes to 56 points by adding -2 values at the beginning
+            # So we need to pad h_samples to match (56 points total)
+            # h_samples from JSON: [240, 250, ..., 710] (48 points)
+            # After padding to 56: [dummy, ..., dummy, 240, 250, ..., 710]
+            # In dataloader: h_samples = np.array(h_samples)/2.5 - 32 (after padding, but h_samples isn't padded in dataloader)
+            # Actually, looking at the dataloader code, h_samples remains 48 points, but lanes are padded to 56
+            # So the padded lanes have 8 extra -2 values at the beginning, but h_samples doesn't have corresponding values
+            # We need to generate h_samples that match the padded lanes structure
+            
+            # Original h_samples: 48 points from 240 to 710
+            start_h = 240
+            delta = 10
+            stop_h = 710 + delta  # 720, so np.arange(240, 720, 10) gives 48 points
+            h_samples_original = np.arange(start_h, stop_h, delta)  # 48 points
+            # Match the dataloader transformation: h_samples/2.5 - 32
+            h_samples_resized = h_samples_original / 2.5 - 32  # 48 points
+            
+            # Now pad to match num_points (56)
+            # The dataloader pads lanes with 8 -2 values at the beginning (56 - 48 = 8)
+            # So we need to pad h_samples with 8 dummy values at the beginning
+            pad_size = num_points - len(h_samples_resized)  # Should be 8
+            if pad_size > 0:
+                # Pad at the beginning with dummy values (they won't be used since valid_points will mask them)
+                # Use the first valid h_sample value repeated for padding
+                h_samples_padded = np.concatenate([np.full(pad_size, h_samples_resized[0]), h_samples_resized])
+            else:
+                h_samples_padded = h_samples_resized[:num_points]
+            
+            h_samples = torch.tensor(h_samples_padded, dtype=gt_params.dtype, device=gt_params.device)
+            h_samples = h_samples.unsqueeze(0).expand(gt_params.size(0), -1)
+            
+            # Transform coordinates from normal view to ortho (birds-eye) view
+            # This is necessary because the model outputs polynomial coefficients in ortho view
+            x_ortho, y_ortho = self._transform_to_ortho_view(gt_params, h_samples)
+            
+            # Fit polynomial coefficients from ground truth coordinates in ortho view
+            gt_coeffs = self._fit_polynomial_coefficients(x_ortho, y_ortho, valid_samples)
+        else:
+            # gt_params are already polynomial coefficients
+            gt_coeffs = gt_params
+        
+        # The model outputs polynomial coefficients in terms of y_map (in [0, 255] range)
+        # The Area_Loss integrates over y in [0, 0.7] normalized range (in [0, 1])
+        # So we need to convert coefficients from y_map space to normalized y space
+        # If x = a*y_map^2 + b*y_map + c, and y_map = 255*y_norm, then:
+        # x = a*(255*y_norm)^2 + b*(255*y_norm) + c = a*255^2*y_norm^2 + b*255*y_norm + c
+        # So the normalized coefficients are: (a*255^2, b*255, c)
+        
+        # Convert predicted coefficients from y_map space to normalized y space
+        if self.order == 2:
+            params_norm = torch.stack([
+                params[:, 0] * (255.0 ** 2),  # a_norm = a * 255^2
+                params[:, 1] * 255.0,          # b_norm = b * 255
+                params[:, 2]                   # c_norm = c (unchanged)
+            ], dim=1)
+            gt_coeffs_norm = torch.stack([
+                gt_coeffs[:, 0] * (255.0 ** 2),  # a_norm = a * 255^2
+                gt_coeffs[:, 1] * 255.0,          # b_norm = b * 255
+                gt_coeffs[:, 2]                   # c_norm = c (unchanged)
+            ], dim=1)
+        elif self.order == 1:
+            params_norm = torch.stack([
+                params[:, 0] * 255.0,  # b_norm = b * 255
+                params[:, 1]           # c_norm = c (unchanged)
+            ], dim=1)
+            gt_coeffs_norm = torch.stack([
+                gt_coeffs[:, 0] * 255.0,  # b_norm = b * 255
+                gt_coeffs[:, 1]           # c_norm = c (unchanged)
+            ], dim=1)
+        else:
+            # For order 0, no conversion needed
+            params_norm = params
+            gt_coeffs_norm = gt_coeffs
+        
+        # Compute difference between predicted and ground truth coefficients (in normalized space)
+        diff = params_norm - gt_coeffs_norm
         a = diff[:, 0]
         b = diff[:, 1]
-        t = 0.7 # up to which y location to integrate
+        t = 0.7 # up to which y location to integrate (normalized, in [0, 1])
+        
         if self.order == 2:
             c = diff[:, 2]
             if self.weight_funct == 'none':
@@ -139,10 +343,16 @@ class Area_Loss(nn.Module):
         else:
             return NotImplementedError('The requested order is not implemented, only none, linear or quadratic possible')
 
-        # Mask select if lane is present
-        mask = torch.prod(gt_params != 0, 1).byte()
+        # Mask select if lane is present (check if there are valid points or non-zero coefficients)
+        if valid_samples is not None:
+            # Use valid_samples to determine if lane is present
+            mask = (valid_samples.sum(dim=1) > 0).bool()
+        else:
+            # Fallback: check if coefficients are non-zero
+            mask = (torch.abs(gt_coeffs).sum(dim=1) > 1e-6).bool()
+        
         loss_fit = torch.masked_select(loss_fit, mask)
-        loss_fit = loss_fit.mean(0) if loss_fit.size()[0] != 0 else 0 # mean over the batch
+        loss_fit = loss_fit.mean(0) if loss_fit.size()[0] != 0 else torch.tensor(0.0, dtype=params.dtype, device=params.device)
         return loss_fit
 
 

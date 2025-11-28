@@ -48,38 +48,52 @@ def test_model(loader, model, criterion, criterion_seg,
                     input = input.cuda(non_blocking=True).float()
 
                 # Run model
-                torch.cuda.synchronize()
+                if not args.no_cuda:
+                    torch.cuda.synchronize()
                 a = time.time()
                 beta0, beta1, beta2, beta3, weightmap_zeros, \
                     output_net, outputs_line, outputs_horizon, output_seg = model(input, gt_line=np.array([1,1]), 
                                                                                   end_to_end=args.end_to_end, gt=None)
-                torch.cuda.synchronize()
+                if not args.no_cuda:
+                    torch.cuda.synchronize()
                 b = time.time()
                 batch_time.update(b-a)
+
+                # Calculate X coordinates
+                x_cal0 = params.compute_coordinates(beta0)
+                x_cal1 = params.compute_coordinates(beta1)
+                
+                # Handle models with only 2 lanes (nclasses=2) vs 4 lanes (nclasses=4)
+                if beta2 is not None and beta3 is not None:
+                    x_cal2 = params.compute_coordinates(beta2)
+                    x_cal3 = params.compute_coordinates(beta3)
+                    lanes_pred = torch.stack((x_cal0, x_cal1, x_cal2, x_cal3), dim=1)
+                else:
+                    # For 2-lane models, create dummy lanes (filled with -2) for lanes 2 and 3
+                    batch_size = x_cal0.size(0)
+                    num_points = x_cal0.size(1)
+                    device = x_cal0.device
+                    x_cal2 = torch.full((batch_size, num_points), -2.0, device=device)
+                    x_cal3 = torch.full((batch_size, num_points), -2.0, device=device)
+                    lanes_pred = torch.stack((x_cal0, x_cal1, x_cal2, x_cal3), dim=1)
 
                 # Horizon task & Line classification task
                 if args.clas:
                     horizon_pred = nn.Sigmoid()(outputs_horizon).sum(dim=1)
                     horizon_pred = (torch.round((resize_coordinates(horizon_pred) + 80)/10)*10).int()
                     line_pred = torch.round(nn.Sigmoid()(outputs_line))
+                    # Check line type branch
+                    line_pred = line_pred[:, [1, 2, 0, 3]]
+                    # lanes_pred[(1 - line_pred[:, :, None]).byte().expand_as(lanes_pred)] = -2
+                    lanes_pred[(1 - line_pred[:, :, None]).bool().expand_as(lanes_pred)] = -2
+                    # Check horizon branch
+                    bounds = ((horizon_pred - 160) / 10)
+                    for k, bound in enumerate(bounds):
+                        # lanes_pred[k, :, :bound.item()] = -2
+                        lanes_pred[k, :, :int(bound.item())] = -2
                 else:
-                    assert False
-
-                # Calculate X coordinates
-                x_cal0 = params.compute_coordinates(beta0)
-                x_cal1 = params.compute_coordinates(beta1)
-                x_cal2 = params.compute_coordinates(beta2)
-                x_cal3 = params.compute_coordinates(beta3)
-                lanes_pred = torch.stack((x_cal0, x_cal1, x_cal2, x_cal3), dim=1)
-
-                # Check line type branch
-                line_pred = line_pred[:, [1, 2, 0, 3]]
-                lanes_pred[(1 - line_pred[:, :, None]).byte().expand_as(lanes_pred)] = -2
-
-                # Check horizon branch
-                bounds = ((horizon_pred - 160) / 10)
-                for k, bound in enumerate(bounds):
-                    lanes_pred[k, :, :bound.item()] = -2
+                    # Without classification, assume all lanes are valid (no filtering)
+                    pass
 
                 # TODO check intersections
                 lanes_pred[lanes_pred > 1279] = -2
@@ -121,12 +135,11 @@ def test_model(loader, model, criterion, criterion_seg,
                         img.save(os.path.join(args.save_path + '/example/testset', '{}.jpg'.format(im_id))) 
 
 
-        # Calculate accuracy
-        if args.clas and args.nclasses > 3:
-            acc_seg = LaneEval.bench_one_submit(test_set_file, gt_file)
-            print(acc_seg)
-            print("===> Average ACC on TESTSET is {:.8} in {:.6}s for a batch".format(acc_seg[0], batch_time.avg))
-    return acc_seg[0]
+        # Calculate accuracy (works for both classification and non-classification models)
+        acc_seg = LaneEval.bench_one_submit(test_set_file, gt_file)
+        print(acc_seg)
+        print("===> Average ACC on TESTSET is {:.8} in {:.6}s for a batch".format(acc_seg[0], batch_time.avg))
+        return acc_seg[0]
 
 
 class Projections():
@@ -162,12 +175,13 @@ class Projections():
         self.y_prime = self.y_prime.unsqueeze(0).repeat(options.batch_size, 1).unsqueeze(2)
         self.M_inv = self.M_inv.unsqueeze(0).repeat(options.batch_size, 1, 1)
 
-        # use gpu
-        self.M = self.M.cuda()
-        self.M_inv = self.M_inv.cuda()
-        self.y_prime = self.y_prime.cuda()
-        self.Y = self.Y.cuda()
-        self.ones = self.ones.cuda()
+        # use gpu if available
+        if not options.no_cuda:
+            self.M = self.M.cuda()
+            self.M_inv = self.M_inv.cuda()
+            self.y_prime = self.y_prime.cuda()
+            self.Y = self.Y.cuda()
+            self.ones = self.ones.cuda()
 
     def compute_coordinates(self, params):
         # Sample at y_d in the homography space

@@ -74,7 +74,7 @@ def define_args():
     # parser.add_argument('--gt_dir', type=str, default='/usr/data/tmp/Lane_Detection/DATASET/ground_truth/', help='directory to gt')
     parser.add_argument('--image_dir', type=str, required=True, help='directory to image dir')
     parser.add_argument('--gt_dir', type=str, required=True, help='directory to gt')
-    parser.add_argument('--test_dir', type=str, default='/usr/data/tmp/Lane_Detection/TESTSET/', help='Path to testset')
+    parser.add_argument('--test_dir', type=str, default=None, help='Path to testset directory (should contain clips/ folder)')
     parser.add_argument('--save_path', type=str, default='Saved/', help='directory to gt')
     parser.add_argument('--json_file', type=str, default='Labels/Curve_parameters.json', help='directory to json input')
     # LOSS settings
@@ -144,50 +144,26 @@ def save_weightmap(train_or_val, weightmap_zeros,
     img = images[0].permute(1, 2, 0).data.cpu().numpy()
     img_gt = np.copy(img)
     gt_orig = gt[0].data.cpu().numpy()
-    # Squeeze gt_orig to remove any extra dimensions
-    # Handle both (1, H, W) and (H, W) cases
-    while len(gt_orig.shape) > 2:
-        gt_orig = gt_orig.squeeze(0)
-    # Ensure it's 2D (H, W) for matplotlib imshow
-    if len(gt_orig.shape) == 2:
-        pass  # Already correct shape
-    elif len(gt_orig.shape) == 3:
-        # If still 3D, take first channel or convert to grayscale
-        if gt_orig.shape[2] == 1:
-            gt_orig = gt_orig[:, :, 0]
-        else:
-            # If multiple channels, use first one
-            gt_orig = gt_orig[:, :, 0]
     lanes_pred = [x_cal0, x_cal1, x_cal2, x_cal3]
     lanes_gt = [gt0, gt1, gt2, gt3]
 
-    # Convert images to uint8 format for OpenCV operations
-    img_uint8 = (np.clip(img, 0, 1) * 255).astype(np.uint8).copy()
-    img_gt_uint8 = (np.clip(img_gt, 0, 1) * 255).astype(np.uint8).copy()
-
     # Warp input
-    warped_img = cv2.warpPerspective(np.asarray(img_uint8), M, (2*resize,resize))
+    warped_img = cv2.warpPerspective(np.asarray(img), M, (2*resize,resize))
 
     # Visualize lane line coordinates
     for index in range(nclasses):
-        if lanes_pred[index] is not None:
-            lane_pred = lanes_pred[index].data.cpu().numpy()[0]
-            lane_gt = lanes_gt[index].data.cpu().numpy()[0]
-            points_pred = [(x,y) for x,y in zip(lane_pred, h_samples) if x!=0]
-            points_gt = [(x,y) for x,y in zip(lane_gt, h_samples) if x!=-2]
-            for pt in points_pred:
-                pt_int = (int(pt[0]), int(pt[1]))
-                if 0 <= pt_int[0] < img_uint8.shape[1] and 0 <= pt_int[1] < img_uint8.shape[0]:
-                    cv2.circle(img_uint8, pt_int, color=colormap[index], radius=2, thickness=-1)
-            for pt_gt in points_gt:
-                pt_int = (int(pt_gt[0]), int(pt_gt[1]))
-                if 0 <= pt_int[0] < img_gt_uint8.shape[1] and 0 <= pt_int[1] < img_gt_uint8.shape[0]:
-                    cv2.circle(img_gt_uint8, pt_int, color=colormap[index], radius=2, thickness=-1)
+        lane_pred = lanes_pred[index].data.cpu().numpy()[0]
+        lane_gt = lanes_gt[index].data.cpu().numpy()[0]
+        points_pred = [(x,y) for x,y in zip(lane_pred, h_samples) if x!=0]
+        points_gt = [(x,y) for x,y in zip(lane_gt, h_samples) if x!=-2]
+        for pt in points_pred:
+            img = cv2.circle(np.array(img), tuple(np.int32(pt)), color=colormap[index], radius = 2)
+        for pt_gt in points_gt:
+            img_gt = cv2.circle(np.array(img_gt), tuple(np.int32(pt_gt)), color=colormap[index], radius = 2)
 
-    # Convert back to float for visualization
-    img = img_uint8.astype(np.float32) / 255.0
-    img_gt = img_gt_uint8.astype(np.float32) / 255.0
-    warped_img = warped_img.astype(np.float32) / 255.0
+    img = np.clip(img, 0, 1)
+    img_gt = np.clip(img_gt, 0, 1)
+    warped_img = np.clip(warped_img, 0, 1)
     fig = plt.figure()
     ax1 = fig.add_subplot(321)
     ax2 = fig.add_subplot(322)
@@ -200,13 +176,7 @@ def save_weightmap(train_or_val, weightmap_zeros,
     ax2.set_title('Prediction LSQ')
     ax3.imshow(wm)
     ax3.set_title('Weight Maps')
-    # Ensure gt_orig is 2D for imshow
-    if len(gt_orig.shape) != 2:
-        gt_orig = gt_orig.squeeze()
-        if len(gt_orig.shape) != 2:
-            # Last resort: take first channel or flatten
-            gt_orig = gt_orig.reshape(gt_orig.shape[-2], gt_orig.shape[-1])
-    ax4.imshow(gt_orig, cmap='gray')
+    ax4.imshow(gt_orig)
     ax4.set_title('Segmentation ground truth ')
     # plt.subplots_adjust(left=0.2, right=0.68)
     # plt.colorbar(plot4)

@@ -1,0 +1,3 @@
+=> loading checkpoint 'Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square/model_best_epoch_497.pth.tar'
+[np.float64(0.8731176825510937), 0.37392163910855497, 0.26258087706685856]
+===> Average ACC on TESTSET is 0.87311768 in 0.426155s for a batch

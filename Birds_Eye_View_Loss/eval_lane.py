@@ -5,11 +5,7 @@ Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by
 
 import numpy as np
 from sklearn.linear_model import LinearRegression
-# Try to use ujson for speed, fall back to standard json if not available
-try:
-    import ujson as json
-except ImportError:
-    import json
+import ujson as json
 
 class LaneEval(object):
     lr = LinearRegression()

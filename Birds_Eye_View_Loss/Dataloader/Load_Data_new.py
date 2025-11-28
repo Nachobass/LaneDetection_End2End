@@ -20,12 +20,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import torchvision.transforms.functional as F
 from torch.utils.data.dataloader import default_collate
-# Handle numpy RankWarning compatibility (removed in numpy 1.20+)
-try:
-    warnings.simplefilter('ignore', np.RankWarning)
-except AttributeError:
-    # RankWarning was removed in newer numpy versions, ignore the error
-    pass
+warnings.simplefilter('ignore', np.RankWarning)
 
 
 class LaneDataset(Dataset):

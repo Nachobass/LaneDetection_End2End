@@ -20,11 +20,11 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import torchvision.transforms.functional as F
 from torch.utils.data.dataloader import default_collate
-# Handle numpy RankWarning compatibility (removed in numpy 1.20+)
+# RankWarning was removed in NumPy 1.20+, handle gracefully
 try:
     warnings.simplefilter('ignore', np.RankWarning)
 except AttributeError:
-    # RankWarning was removed in newer numpy versions, ignore the error
+    # RankWarning doesn't exist in newer NumPy versions, ignore it
     pass
 from torch.utils.data.sampler import Sampler
 
@@ -32,11 +32,15 @@ from torch.utils.data.sampler import Sampler
 
 
 def get_testloader(path, batch_size, num_workers, resize=256):
+    # Look for test_label.json in the test directory first
     json_file = os.path.join(path, 'test_label.json')
-    # Return None if test directory doesn't exist
-    if not os.path.exists(path) or not os.path.exists(json_file):
-        print(f"Warning: Test directory {path} or test_label.json not found. Skipping test loader.")
-        return None
+    if not os.path.exists(json_file):
+        # If not found, look in the parent directory
+        parent_dir = os.path.dirname(path)
+        json_file = os.path.join(parent_dir, 'test_label.json')
+        if not os.path.exists(json_file):
+            raise FileNotFoundError(f"test_label.json not found in {path} or {parent_dir}")
+    
     transformed_dataset = LaneTestSet(gt_file=json_file,
                                       path=path,
                                       resize=resize)
@@ -98,15 +102,14 @@ class LaneDataset(Dataset):
         self.ordered_lanes = [json.loads(line) for line in open(lanes_file).readlines()]
         self.line_file = [json.loads(line) for line in open(line_file).readlines()]
         self.end_to_end = end_to_end
-        self.rgb_lst = sorted(os.listdir(image_dir))
-        self.gt_lst = sorted(os.listdir(gt_dir))
-        self.num_imgs = len(self.rgb_lst)
-        # Support both 2535 (subset) and 3626 (full) dataset sizes
-        assert len(self.rgb_lst) == len(self.gt_lst), f"Mismatch: {len(self.rgb_lst)} images vs {len(self.gt_lst)} ground truth files"
-        assert len(self.rgb_lst) in [2535, 3626], f"Expected 2535 or 3626 images, got {len(self.rgb_lst)}"
-
-        target_idx = [int(i.split('.')[0]) for i in self.rgb_lst]
-        self.valid_idx = [target_idx[i]-1 for i in valid_idx]
+        
+        # Use paths from JSON instead of listing directories
+        # The JSON files contain 'raw_file' paths like "clips/0313-1/6040/20.jpg"
+        self.num_imgs = len(self.ordered_lanes)
+        print(f'Found {self.num_imgs} images in dataset')
+        
+        # Convert valid_idx to actual indices (they're already 0-indexed from get_loader)
+        self.valid_idx = valid_idx
         self.num_points = 56
         self.nclasses = nclasses
         print('Flipping images randomly:', self.flip_on)
@@ -116,21 +119,36 @@ class LaneDataset(Dataset):
         """
         Conventional len method
         """
-        return self.num_img
+        return self.num_imgs
 
     def __getitem__(self, idx):
         """
         Args: idx (int): Index in list to load image
         """
-        # Load img, gt, x_coordinates, y_coordinates, line_type
-        assert self.rgb_lst[idx].split('.')[0] == self.gt_lst[idx].split('.')[0]
-        img_name = os.path.join(self.image_dir, self.rgb_lst[idx])
-        gt_name = os.path.join(self.gt_dir, self.gt_lst[idx])
+        # Get image path from JSON (raw_file contains path like "clips/0313-1/6040/20.jpg")
+        raw_file = self.ordered_lanes[idx]["raw_file"]
+        
+        # Construct full image path
+        # raw_file is relative to image_dir, e.g., "clips/0313-1/6040/20.jpg"
+        img_name = os.path.join(self.image_dir, raw_file)
+        
+        # Construct GT path: remove "clips/" prefix and change extension to .png
+        # raw_file: "clips/0313-1/6040/20.jpg" -> GT: "0313-1/6040/20.png"
+        # gt_dir already points to seg_label directory
+        if raw_file.startswith('clips/'):
+            gt_relative_path = raw_file[6:]  # Remove "clips/" prefix (6 characters)
+        else:
+            gt_relative_path = raw_file
+        gt_relative_path = gt_relative_path.replace('.jpg', '.png')
+        gt_name = os.path.join(self.gt_dir, gt_relative_path)
+        
+        # Load images
         with open(img_name, 'rb') as f:
             image = (Image.open(f).convert('RGB'))
         with open(gt_name, 'rb') as f:
             gt = (Image.open(f).convert('P'))
-        idx = int(self.rgb_lst[idx].split('.')[0]) - 1
+        
+        # Get lane data from JSON
         lanes_lst = self.ordered_lanes[idx]["lanes"]
         h_samples = self.ordered_lanes[idx]["h_samples"]
         line_lst = self.line_file[idx]["lines"]
@@ -335,14 +353,14 @@ def load_valid_set_file_all(valid_idx, target_file, image_dir):
     # file1 = "Labels/Curve_parameters.json"
     file1 = "Labels/label_data_all.json"
     labels_file = [json.loads(line) for line in open(file1).readlines()]
-    content = sorted(os.listdir(image_dir))
-    target_idx = [int(i.split('.')[0]) for i in content]
-    new_idx = [target_idx[i]-1 for i in valid_idx]
+    # valid_idx is already 0-indexed, use it directly
+    # No need to list directories - just use the indices from the dataset
     with open(target_file, 'w') as jsonFile:
-        for image_id in new_idx:
-            labels = labels_file[image_id]
-            json.dump(labels, jsonFile)
-            jsonFile.write('\n')
+        for image_id in valid_idx:
+            if image_id < len(labels_file):
+                labels = labels_file[image_id]
+                json.dump(labels, jsonFile)
+                jsonFile.write('\n')
 
 
 def load_0313_valid_set_file(valid_idx, nclasses):

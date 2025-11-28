@@ -1,0 +1,12 @@
+# Ignorar carpeta archive (excepto readme.md en test_set y train_set)
+archive/TUSimple/test_set/**
+!archive/TUSimple/test_set/readme.md
+archive/TUSimple/train_set/**
+!archive/TUSimple/train_set/readme.md
+
+# Python cache and system files
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store

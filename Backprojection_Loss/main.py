@@ -51,7 +51,10 @@ def main():
     if not args.end_to_end:
         assert args.pretrained == False
     if args.clas:
-        assert args.nclasses == 4
+        # Classification task requires 4 classes (lanes)
+        if args.nclasses != 4:
+            print(f"Warning: --clas True requires nclasses=4, but got {args.nclasses}. Setting nclasses to 4.")
+            args.nclasses = 4
     if args.val_batch_size is None:
         args.val_batch_size = args.batch_size
     
@@ -88,7 +91,47 @@ def main():
                                                        nclasses=args.nclasses,
                                                        split_percentage=args.split_percentage)
 
-    test_loader = get_testloader(args.test_dir, args.val_batch_size, args.nworkers)
+    # Create test_loader if classification task is enabled or if evaluating
+    test_loader = None
+    if args.clas or args.evaluate:
+        # If test_dir is not specified, try to infer it from image_dir
+        if args.test_dir is None:
+            # Try to find test_set directory relative to image_dir
+            image_dir_parent = os.path.dirname(args.image_dir)  # ../archive/TUSimple
+            potential_test_dir = os.path.join(image_dir_parent, 'test_set')
+            if os.path.exists(potential_test_dir):
+                args.test_dir = potential_test_dir
+                print(f"Auto-detected test_dir: {args.test_dir}")
+            else:
+                print("Warning: test_dir not specified and could not be auto-detected.")
+                if args.evaluate:
+                    print("Test loader is needed for evaluation. Please specify --test_dir.")
+                else:
+                    print("Test loader is only needed when --clas is True. Continuing without test loader...")
+                test_loader = None
+        
+        if args.test_dir is not None:
+            # Check if test_dir exists or if test_label.json exists
+            test_json_in_dir = os.path.join(args.test_dir, 'test_label.json')
+            parent_dir = os.path.dirname(args.test_dir) if args.test_dir else None
+            test_json_in_parent = os.path.join(parent_dir, 'test_label.json') if parent_dir else None
+            
+            if os.path.exists(test_json_in_dir) or (test_json_in_parent and os.path.exists(test_json_in_parent)):
+                try:
+                    test_loader = get_testloader(args.test_dir, args.val_batch_size, args.nworkers)
+                except FileNotFoundError as e:
+                    print(f"Warning: {e}")
+                    if args.evaluate:
+                        print("Test loader is needed for evaluation. Please check test_dir path.")
+                    else:
+                        print("Test loader is only needed when --clas is True. Continuing without test loader...")
+            else:
+                print(f"Warning: test_label.json not found at {test_json_in_dir}" + 
+                      (f" or {test_json_in_parent}." if test_json_in_parent else "."))
+                if args.evaluate:
+                    print("Test loader is needed for evaluation. Please check test_dir path.")
+                else:
+                    print("Test loader is only needed when --clas is True. Continuing without test loader...")
 
     # Define network
     model = Net(args)
@@ -157,7 +200,8 @@ def main():
             # Redirect stdout
             sys.stdout = Logger(os.path.join(args.save_path, log_file_name))
             print("=> loading checkpoint '{}'".format(args.resume))
-            checkpoint = torch.load(path)
+            map_location = 'cpu' if args.no_cuda else None
+            checkpoint = torch.load(path, map_location=map_location)
             args.start_epoch = checkpoint['epoch']
             lowest_loss = checkpoint['loss']
             best_epoch = checkpoint['best epoch']
@@ -176,28 +220,42 @@ def main():
         skip = get_flags()
         files = glob.glob(os.path.join(args.save_path, 'model_best*'))
         if len(files) == 0:
-            print('No checkpoint found!')
+            # Fallback: try to find the latest checkpoint file
+            checkpoint_files = glob.glob(os.path.join(args.save_path, 'checkpoint_model_epoch_*.pth.tar'))
+            if len(checkpoint_files) > 0:
+                # Sort by epoch number and get the latest
+                checkpoint_files.sort(key=lambda x: int(x.split('epoch_')[1].split('.')[0]))
+                best_file_name = checkpoint_files[-1]
+                print("=> No model_best found, using latest checkpoint: '{}'".format(best_file_name))
+            else:
+                print('No checkpoint found in {}!'.format(args.save_path))
+                print('Make sure you are using the same arguments as during training (especially --nclasses, --clas, etc.)')
+                return
         else:
             best_file_name = files[0]
-            if os.path.isfile(best_file_name):
-                sys.stdout = Logger(os.path.join(args.save_path, 'Evaluate.txt'))
-                print("=> loading checkpoint '{}'".format(best_file_name))
-                checkpoint = torch.load(best_file_name)
-                model.load_state_dict(checkpoint['state_dict'])
-            else:
-                print("=> no checkpoint found at '{}'".format(best_file_name))
+        
+        if os.path.isfile(best_file_name):
+            sys.stdout = Logger(os.path.join(args.save_path, 'Evaluate.txt'))
+            print("=> loading checkpoint '{}'".format(best_file_name))
+            map_location = 'cpu' if args.no_cuda else None
+            checkpoint = torch.load(best_file_name, map_location=map_location)
+            model.load_state_dict(checkpoint['state_dict'])
+        else:
+            print("=> no checkpoint found at '{}'".format(best_file_name))
+            return
 
         # validate(valid_loader, model, criterion, criterion_seg, 
                 # criterion_line_class, criterion_horizon)
 
-        if args.clas and test_loader is not None:
+        # Run test_model if test_loader is available (for both classification and non-classification models)
+        if test_loader is not None:
             test_model(test_loader, model, 
                        criterion, 
                        criterion_seg, 
                        criterion_line_class, 
                        criterion_horizon, args)
-        elif args.clas and test_loader is None:
-            print("Warning: test_loader is None, skipping test_model evaluation")
+        else:
+            print("Warning: test_loader is None. Skipping test_model call.")
         return
 
     # Start training from clean slate
@@ -298,19 +356,19 @@ def main():
 
             # Compute losses on parameters or on segmentation
             if args.end_to_end:
-                loss_left, x_cal0 = criterion(beta0, gt0, valid_points[:, 0])
-                loss_right, x_cal1 = criterion(beta1, gt1, valid_points[:, 1])
-                if args.nclasses > 3:
-                    # add losses of further lane lines
-                    loss_left1, x_cal2 = criterion(beta2, gt2, valid_points[:, 2])
-                    loss_right1, x_cal3 = criterion(beta3, gt3, valid_points[:, 3])
-                    loss_left += loss_left1
-                    loss_right += loss_right1
-                # average loss over lanes
-                loss = (loss_left + loss_right) / args.nclasses
-            else:
-                loss = criterion_seg(output_net, gt)
-                with torch.no_grad():
+                # For area loss, pass valid_points as the third argument
+                if args.loss_policy == 'area':
+                    loss_left = criterion(beta0, gt0, valid_points[:, 0])
+                    loss_right = criterion(beta1, gt1, valid_points[:, 1])
+                    x_cal0, x_cal1 = None, None  # Area loss doesn't return x_cal
+                    if args.nclasses > 3:
+                        # add losses of further lane lines
+                        loss_left1 = criterion(beta2, gt2, valid_points[:, 2])
+                        loss_right1 = criterion(beta3, gt3, valid_points[:, 3])
+                        x_cal2, x_cal3 = None, None
+                        loss_left += loss_left1
+                        loss_right += loss_right1
+                else:
                     loss_left, x_cal0 = criterion(beta0, gt0, valid_points[:, 0])
                     loss_right, x_cal1 = criterion(beta1, gt1, valid_points[:, 1])
                     if args.nclasses > 3:
@@ -319,13 +377,36 @@ def main():
                         loss_right1, x_cal3 = criterion(beta3, gt3, valid_points[:, 3])
                         loss_left += loss_left1
                         loss_right += loss_right1
+                # average loss over lanes
+                loss = (loss_left + loss_right) / args.nclasses
+            else:
+                loss = criterion_seg(output_net, gt)
+                with torch.no_grad():
+                    if args.loss_policy == 'area':
+                        loss_left = criterion(beta0, gt0, valid_points[:, 0])
+                        loss_right = criterion(beta1, gt1, valid_points[:, 1])
+                        x_cal0, x_cal1 = None, None
+                        if args.nclasses > 3:
+                            loss_left1 = criterion(beta2, gt2, valid_points[:, 2])
+                            loss_right1 = criterion(beta3, gt3, valid_points[:, 3])
+                            x_cal2, x_cal3 = None, None
+                            loss_left += loss_left1
+                            loss_right += loss_right1
+                    else:
+                        loss_left, x_cal0 = criterion(beta0, gt0, valid_points[:, 0])
+                        loss_right, x_cal1 = criterion(beta1, gt1, valid_points[:, 1])
+                        if args.nclasses > 3:
+                            loss_left1, x_cal2 = criterion(beta2, gt2, valid_points[:, 2])
+                            loss_right1, x_cal3 = criterion(beta3, gt3, valid_points[:, 3])
+                            loss_left += loss_left1
+                            loss_right += loss_right1
                     loss_metric = (loss_left + loss_right) / args.nclasses
                     rmse_metric.update(loss_metric.item(), input.size(0))
 
             # Horizon task & Line classification task
             if args.clas:
-                if not args.no_cuda:
-                    gt_horizon, gt_line = gt_horizon.cuda(), gt_line.cuda()
+                gt_horizon, gt_line = gt_horizon.cuda(), \
+                                      gt_line.cuda()
                 loss_horizon = criterion_horizon(outputs_horizon, gt_horizon).double()
                 loss_line = criterion_line_class(outputs_line, gt_line).double()
                 loss = loss*args.weight_fit + (loss_line + loss_horizon)*args.weight_class
@@ -357,8 +438,8 @@ def main():
                        epoch+1, i+1, len(train_loader), batch_time=batch_time,
                        data_time=data_time, loss=losses, rmse=rmse_metric))
 
-            # Plot weightmap and curves
-            if (i + 1) % args.save_freq == 0:
+            # Plot weightmap and curves (skip if x_cal0 is None, which happens with Area_Loss)
+            if (i + 1) % args.save_freq == 0 and x_cal0 is not None:
                 save_weightmap('train', weightmap_zeros, x_cal0, x_cal1, x_cal2, x_cal3,
                                gt0, gt1, gt2, gt3, gt, 0, i, input,
                                args.no_ortho, args.resize, args.save_path, args.nclasses, args.no_mapping)
@@ -388,15 +469,16 @@ def main():
         total_score = losses_valid
 
         # TODO get acc
-        if args.clas and test_loader is not None:
-            metric = test_model(test_loader, model, 
-                       criterion, 
-                       criterion_seg, 
-                       criterion_line_class, 
-                       criterion_horizon, args)
-            total_score = metric
-        elif args.clas and test_loader is None:
-            print("Warning: test_loader is None, using validation loss as total_score")
+        if args.clas:
+            if test_loader is not None:
+                metric = test_model(test_loader, model, 
+                           criterion, 
+                           criterion_seg, 
+                           criterion_line_class, 
+                           criterion_horizon, args)
+                total_score = metric
+            else:
+                print("Warning: test_loader is None. Using validation loss as score.")
 
 
         # Adjust learning_rate if loss plateaued
@@ -464,19 +546,19 @@ def validate(loader, model, criterion, criterion_seg,
 
             # Compute losses on parameters or on segmentation
             if args.end_to_end:
-                loss_left, x_cal0 = criterion(beta0, gt0, valid_points[:, 0])
-                loss_right, x_cal1 = criterion(beta1, gt1, valid_points[:, 1])
-                if args.nclasses > 3:
-                    # add losses of further lane lines
-                    loss_left1, x_cal2 = criterion(beta2, gt2, valid_points[:, 2])
-                    loss_right1, x_cal3 = criterion(beta3, gt3, valid_points[:, 3])
-                    loss_left += loss_left1
-                    loss_right += loss_right1
-                # average loss over lanes
-                loss = (loss_left + loss_right) / args.nclasses
-            else:
-                loss = criterion_seg(output_net, gt)
-                with torch.no_grad():
+                # For area loss, pass valid_points as the third argument
+                if args.loss_policy == 'area':
+                    loss_left = criterion(beta0, gt0, valid_points[:, 0])
+                    loss_right = criterion(beta1, gt1, valid_points[:, 1])
+                    x_cal0, x_cal1 = None, None  # Area loss doesn't return x_cal
+                    if args.nclasses > 3:
+                        # add losses of further lane lines
+                        loss_left1 = criterion(beta2, gt2, valid_points[:, 2])
+                        loss_right1 = criterion(beta3, gt3, valid_points[:, 3])
+                        x_cal2, x_cal3 = None, None
+                        loss_left += loss_left1
+                        loss_right += loss_right1
+                else:
                     loss_left, x_cal0 = criterion(beta0, gt0, valid_points[:, 0])
                     loss_right, x_cal1 = criterion(beta1, gt1, valid_points[:, 1])
                     if args.nclasses > 3:
@@ -485,6 +567,29 @@ def validate(loader, model, criterion, criterion_seg,
                         loss_right1, x_cal3 = criterion(beta3, gt3, valid_points[:, 3])
                         loss_left += loss_left1
                         loss_right += loss_right1
+                # average loss over lanes
+                loss = (loss_left + loss_right) / args.nclasses
+            else:
+                loss = criterion_seg(output_net, gt)
+                with torch.no_grad():
+                    if args.loss_policy == 'area':
+                        loss_left = criterion(beta0, gt0, valid_points[:, 0])
+                        loss_right = criterion(beta1, gt1, valid_points[:, 1])
+                        x_cal0, x_cal1 = None, None
+                        if args.nclasses > 3:
+                            loss_left1 = criterion(beta2, gt2, valid_points[:, 2])
+                            loss_right1 = criterion(beta3, gt3, valid_points[:, 3])
+                            x_cal2, x_cal3 = None, None
+                            loss_left += loss_left1
+                            loss_right += loss_right1
+                    else:
+                        loss_left, x_cal0 = criterion(beta0, gt0, valid_points[:, 0])
+                        loss_right, x_cal1 = criterion(beta1, gt1, valid_points[:, 1])
+                        if args.nclasses > 3:
+                            loss_left1, x_cal2 = criterion(beta2, gt2, valid_points[:, 2])
+                            loss_right1, x_cal3 = criterion(beta3, gt3, valid_points[:, 3])
+                            loss_left += loss_left1
+                            loss_right += loss_right1
                     loss_metric = (loss_left + loss_right) / args.nclasses
                     rmse_metric_valid.update(loss_metric.item(), input.size(0))
 
@@ -493,8 +598,8 @@ def validate(loader, model, criterion, criterion_seg,
 
             # Horizon task & Line classification task
             if args.clas:
-                if not args.no_cuda:
-                    gt_horizon, gt_line = gt_horizon.cuda(), gt_line.cuda()
+                gt_horizon, gt_line = gt_horizon.cuda(), \
+                                      gt_line.cuda()
                 horizon_pred = torch.round(nn.Sigmoid()(outputs_horizon))
                 acc = torch.eq(horizon_pred, gt_horizon)
                 acc_hor = torch.sum(acc).float()/(args.resize*args.val_batch_size)
@@ -516,8 +621,8 @@ def validate(loader, model, criterion, criterion_seg,
                           'rmse {rmse_metric.val:.8f} ({rmse_metric.avg:.8f})'.format(
                            i+1, len(loader), loss=losses, rmse_metric=rmse_metric_valid))
 
-            # Plot weightmap and curves
-            if (i + 1) % 25 == 0:
+            # Plot weightmap and curves (skip if x_cal0 is None, which happens with Area_Loss)
+            if (i + 1) % 25 == 0 and x_cal0 is not None:
                 save_weightmap('valid', weightmap_zeros, x_cal0, x_cal1, x_cal2, x_cal3,
                                gt0, gt1, gt2, gt3, gt, 0, i, input,
                                args.no_ortho, args.resize, args.save_path, args.nclasses, args.no_mapping)

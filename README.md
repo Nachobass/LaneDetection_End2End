@@ -26,6 +26,58 @@ This end-to-end architecture consist of two parts. The first part is an off the 
 
 Finally we show results for egolane detection. The implementation proofs that this direct optimization is indeed possible and can achieve better results than the conventional segmentation approach. Moreover, this module can be applied to a broad range of tasks since the first stage of the architecture can be chosen freely. The extention to other domains such as object detection is considered as future work which also shows the effectiveness of this architecture.
 
+## Directory Structure
+
+```
+LaneDetection_End2End/
+├── archive/                          # Dataset archive (ignored by git except readme files)
+│   └── TUSimple/
+│       ├── test_set/
+│       │   ├── clips/                # Test video clips
+│       │   ├── readme.md
+│       │   ├── test_label.json
+│       │   └── test_tasks_0627.json
+│       └── train_set/
+│           ├── clips/                # Training video clips
+│           ├── label_data_*.json     # Ground truth labels
+│           ├── readme.md
+│           └── seg_label/            # Segmentation labels
+│
+├── Backprojection_Loss/              # Main implementation with backprojection loss
+│   ├── Dataloader/
+│   │   └── Load_Data_new.py          # Data loading utilities
+│   ├── Networks/
+│   │   ├── ERFNet.py                 # ERFNet architecture
+│   │   ├── LSQ_layer.py              # Least squares layer
+│   │   ├── Least_squares_net.py
+│   │   ├── gels.py
+│   │   └── utils.py                  # Network utilities
+│   ├── Labels/                       # Label files and curve parameters
+│   │   ├── label_data_*.json
+│   │   ├── label_data_all.json
+│   │   ├── label_new.json
+│   │   ├── lanes_ordered.json
+│   │   └── Curve_parameters.json
+│   ├── Saved/                        # Saved models and results
+│   │   └── Mod_*/                    # Model checkpoints and logs
+│   ├── main.py                       # Main training script
+│   ├── test.py                       # Testing script
+│   ├── eval_lane.py                  # Evaluation script
+│   ├── Loss_crit.py                  # Loss functions
+│   └── train.sh                      # Training script
+│
+├── Birds_Eye_View_Loss/              # Alternative implementation with birds-eye view loss
+│   ├── Dataloader/
+│   ├── Networks/
+│   ├── Labels/
+│   ├── main.py
+│   ├── eval_lane.py
+│   └── Loss_crit.py
+│
+├── LICENSE.txt
+└── README.md
+```
+
 ## Requirements
 
 I just updated the code to the most recent version of Pytorch (=pytorch 1.1) with python 3.7.
@@ -33,20 +85,45 @@ The other required packages are: opencv, scikit-learn, torchvision, numpy, matpl
 
 ## Dataset
 
-For the egolane detection experiment, I used a subset from the [TuSimple](http://benchmark.tusimple.ai/#/) dataset. You can download it [here](https://drive.google.com/drive/folders/1UECiIOGjIua9ORIDfcZft8XGTQ-iTzuD?usp=sharing). You can find the images as well as the ground truth annotations in this folder to save you some work. Automatically 20% of the data will be used for validation. TuSimple provides the user 3 json files with ground truth coordinates of the lane lines. I appended the three files and used the index in this  json file to name a specific image. For example: file "10.jpg" in the data directory corresponds with "10.png" in the ground truth directory and with index 10 in the json files (= label_data_all.json and Curve_parameters.json).
+**This implementation uses the complete TuSimple dataset** for training and evaluation. The dataset is located in the `archive/TUSimple/` directory and includes:
 
-You can download the complete TuSimple dataset from [here](https://github.com/TuSimple/tusimple-benchmark/issues/3).
+- **Training set**: Complete training clips with ground truth annotations
+  - Video clips in `archive/TUSimple/train_set/clips/`
+  - Label files: `label_data_0313.json`, `label_data_0531.json`, `label_data_0601.json`
+  - Segmentation labels in `seg_label/`
 
-In the file Labels/Curve_parameters.json, the coefficients of the second degree polynomials are shown for the multiple lane lines in a bird's eye view perspective for the a subset of the data. (three zeros means that the lane line is not present in the image). So, the coefficients for the whole dataset are already computed for you.
+- **Test set**: Complete test clips for evaluation
+  - Video clips in `archive/TUSimple/test_set/clips/`
+  - Test labels: `test_label.json` and `test_tasks_0627.json`
 
-## Run Code
-To run the code (training phase):
+You can download the complete TuSimple dataset from [here](https://github.com/TuSimple/tusimple-benchmark/issues/3) if you don't have it already.
 
-` python main.py --image_dir /path/to/image/folder --gt_dir /path/to/ground_truth/folder --end_to_end True`
+The dataset provides ground truth coordinates of lane lines in JSON format. The label files contain annotations where each entry corresponds to a specific image. For example: file "10.jpg" in the data directory corresponds with "10.png" in the ground truth directory and with index 10 in the json files (e.g., `label_data_all.json` and `Curve_parameters.json`).
 
-Flags:
-- Set flag "end_to_end" to True to regress towards the final lane line coefficients directly.
-- See `python main.py --help` for more information.
+In the file `Labels/Curve_parameters.json`, the coefficients of the second degree polynomials are shown for the multiple lane lines in a bird's eye view perspective. (Three zeros means that the lane line is not present in the image). Automatically 20% of the data will be used for validation.
+
+## Usage
+
+### Commands
+
+Para poder entrenar el modelo en kaggle, se debe ejecutar el siguiente comando luego de haber cargado el dataset llamandolo "lane-detection-original-dataset4":
+```bash
+!ls /kaggle/input/lane-detection-original-dataset4/LaneDetection_End2End-master/Backprojection_Loss
+!cp -r /kaggle/input/lane-detection-original-dataset4/LaneDetection_End2End-master/Backprojection_Loss /kaggle/working/
+
+# 2. Muévete a la carpeta del proyecto
+%cd /kaggle/working/Backprojection_Loss
+
+!python main.py \
+--image_dir /kaggle/input/lane-detection-original-dataset4/LaneDetection_End2End-master/archive/TUSimple/train_set \
+--gt_dir /kaggle/input/lane-detection-original-dataset4/LaneDetection_End2End-master/archive/TUSimple/train_set/seg_label/ \
+--end_to_end True \
+--clas True \
+--nclasses 4 \
+--loss_policy area
+```
+
+
 
 The weight maps will be computed but be aware that the appearance of the weight maps is architecture dependent. Augmenting this method with a line type branch in a shared encoder setup, results in: 
 

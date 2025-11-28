@@ -1,0 +1,2472 @@
+=> loading checkpoint '242'
+=> loaded checkpoint '242' (epoch 243)
+========================================
+Args:Namespace(dataset='lane_detection', batch_size=8, val_batch_size=8, nepochs=500, learning_rate=0.0001, no_cuda=False, nworkers=8, no_dropout=False, nclasses=4, crop_size=80, resize=256, mod='erfnet', layers=18, pool=True, draw_testset=False, pretrained=False, pretrain_epochs=20, skip_epochs=10, channels_in=3, norm='batch', flip_on=False, num_train=3626, split_percentage=0.2, test_mode=False, start_epoch=243, evaluate=False, resume='242', optimizer='adam', weight_init='kaiming', weight_decay=0, lr_decay=False, niter=50, niter_decay=400, lr_policy=None, lr_decay_iters=30, clip_grad_norm=0, order=2, activation_layer='square', reg_ls=0, no_ortho=False, mask_percentage=0.3, use_cholesky=False, activation_net='relu', image_dir='/kaggle/input/lane-detection-original-dataset3/LaneDetection_End2End-master/archive/TUSimple/train_set', gt_dir='/kaggle/input/lane-detection-original-dataset3/LaneDetection_End2End-master/archive/TUSimple/train_set/seg_label/', test_dir='/kaggle/input/lane-detection-original-dataset3/LaneDetection_End2End-master/archive/TUSimple/test_set', save_path='Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square', json_file='Labels/Curve_parameters.json', weight_seg=30, weight_class=1, weight_fit=1, loss_policy='area', weight_funct='none', end_to_end=True, no_mapping=False, gamma=0.0, clas=True, cudnn=True, no_tb=True, print_freq=500, save_freq=100, list=[954, 2789])
+========================================
+Init model: 'erfnet'
+Number of parameters in model ERFNET is 7.334M
+
+ => Start train set for EPOCH 244
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.60022178
+===> Average TOT LOSS-loss on validation set is 55.18449665
+===> Average HORIZON ACC on val is 0.98728841
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 213
+[0.8518414509944877, 0.4119338605319914, 0.31116702612029784]
+===> Average ACC on TESTSET is 0.85184145 in 0.101808s for a batch
+Best model copied
+
+ => Start train set for EPOCH 245
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.41078055
+===> Average TOT LOSS-loss on validation set is 53.35543106
+===> Average HORIZON ACC on val is 0.98827582
+===> Average LINE ACC on val is 0.99166667
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8410626561911604, 0.43646657081236523, 0.3380361849988031]
+===> Average ACC on TESTSET is 0.84106266 in 0.0987169s for a batch
+
+ => Start train set for EPOCH 246
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.69210256
+===> Average TOT LOSS-loss on validation set is 59.17134793
+===> Average HORIZON ACC on val is 0.98860135
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.840611734449351, 0.4380841121495327, 0.3374071411454598]
+===> Average ACC on TESTSET is 0.84061173 in 0.0984667s for a batch
+
+ => Start train set for EPOCH 247
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 32.19059630
+===> Average TOT LOSS-loss on validation set is 68.64307849
+===> Average HORIZON ACC on val is 0.98818359
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8209765798842902, 0.4804097771387491, 0.3890186915887851]
+===> Average ACC on TESTSET is 0.82097658 in 0.0984456s for a batch
+
+ => Start train set for EPOCH 248
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 46.03102220
+===> Average TOT LOSS-loss on validation set is 57.39506961
+===> Average HORIZON ACC on val is 0.98913845
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8328765276779279, 0.4416786484543494, 0.3474418883297388]
+===> Average ACC on TESTSET is 0.83287653 in 0.0984768s for a batch
+
+ => Start train set for EPOCH 249
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 34.86525704
+===> Average TOT LOSS-loss on validation set is 55.14826320
+===> Average HORIZON ACC on val is 0.98915473
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8361201687720362, 0.446980589503954, 0.3490294751977003]
+===> Average ACC on TESTSET is 0.83612017 in 0.0987172s for a batch
+
+ => Start train set for EPOCH 250
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 28.32623910
+===> Average TOT LOSS-loss on validation set is 55.30860775
+===> Average HORIZON ACC on val is 0.98935004
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8466491646982303, 0.42595255212077643, 0.32335849508746783]
+===> Average ACC on TESTSET is 0.84664916 in 0.0986828s for a batch
+
+ => Start train set for EPOCH 251
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 29.78159290
+===> Average TOT LOSS-loss on validation set is 53.87064738
+===> Average HORIZON ACC on val is 0.98920898
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8401201602136166, 0.44365564342199854, 0.3420500838725144]
+===> Average ACC on TESTSET is 0.84012016 in 0.0985049s for a batch
+
+ => Start train set for EPOCH 252
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 27.16293833
+===> Average TOT LOSS-loss on validation set is 55.38351797
+===> Average HORIZON ACC on val is 0.98914931
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8403469583376132, 0.4311646297627606, 0.33498082913970817]
+===> Average ACC on TESTSET is 0.84034696 in 0.0986216s for a batch
+
+ => Start train set for EPOCH 253
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 25.71724861
+===> Average TOT LOSS-loss on validation set is 54.46341090
+===> Average HORIZON ACC on val is 0.98935004
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8394317423230966, 0.43871315600287564, 0.3409717229810698]
+===> Average ACC on TESTSET is 0.83943174 in 0.0987101s for a batch
+
+ => Start train set for EPOCH 254
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 25.86953694
+===> Average TOT LOSS-loss on validation set is 54.75256944
+===> Average HORIZON ACC on val is 0.98902452
+===> Average LINE ACC on val is 0.99166667
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8422260663791019, 0.4373652048885694, 0.3368380062305305]
+===> Average ACC on TESTSET is 0.84222607 in 0.0987328s for a batch
+
+ => Start train set for EPOCH 255
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.09558012
+===> Average TOT LOSS-loss on validation set is 54.28375279
+===> Average HORIZON ACC on val is 0.98918186
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8399452475094988, 0.433411214953271, 0.33572969086987897]
+===> Average ACC on TESTSET is 0.83994525 in 0.0987011s for a batch
+
+ => Start train set for EPOCH 256
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.46093740
+===> Average TOT LOSS-loss on validation set is 53.39727372
+===> Average HORIZON ACC on val is 0.98879666
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8429770677142169, 0.42999640546369516, 0.3320452911574419]
+===> Average ACC on TESTSET is 0.84297707 in 0.0986648s for a batch
+
+ => Start train set for EPOCH 257
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.29204706
+===> Average TOT LOSS-loss on validation set is 53.85276318
+===> Average HORIZON ACC on val is 0.98955621
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8437195106295576, 0.42757009345794394, 0.3293194344596225]
+===> Average ACC on TESTSET is 0.84371951 in 0.0984639s for a batch
+
+ => Start train set for EPOCH 258
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.91861352
+===> Average TOT LOSS-loss on validation set is 56.09309389
+===> Average HORIZON ACC on val is 0.98923611
+===> Average LINE ACC on val is 0.99131944
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.8212606124405208, 0.47690510424155286, 0.38494488377666014]
+===> Average ACC on TESTSET is 0.82126061 in 0.0987204s for a batch
+
+ => Start train set for EPOCH 259
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.93093137
+===> Average TOT LOSS-loss on validation set is 52.12821833
+===> Average HORIZON ACC on val is 0.98941515
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 244
+[0.852143670192735, 0.4121135873472322, 0.310028756290439]
+===> Average ACC on TESTSET is 0.85214367 in 0.098488s for a batch
+Best model copied
+
+ => Start train set for EPOCH 260
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.89066390
+===> Average TOT LOSS-loss on validation set is 52.93368994
+===> Average HORIZON ACC on val is 0.98911133
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 259
+[0.8388390717537891, 0.4420381020848311, 0.34381739755571616]
+===> Average ACC on TESTSET is 0.83883907 in 0.0986053s for a batch
+
+ => Start train set for EPOCH 261
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.15605287
+===> Average TOT LOSS-loss on validation set is 53.77645046
+===> Average HORIZON ACC on val is 0.98919271
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 259
+[0.8565079293759195, 0.4035765636232926, 0.30050323508267457]
+===> Average ACC on TESTSET is 0.85650793 in 0.0982614s for a batch
+Best model copied
+
+ => Start train set for EPOCH 262
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.91244540
+===> Average TOT LOSS-loss on validation set is 52.68270443
+===> Average HORIZON ACC on val is 0.98886176
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 261
+[0.8392707370511089, 0.4310747663551402, 0.3320153366882352]
+===> Average ACC on TESTSET is 0.83927074 in 0.0986038s for a batch
+
+ => Start train set for EPOCH 263
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.15172094
+===> Average TOT LOSS-loss on validation set is 53.39862099
+===> Average HORIZON ACC on val is 0.9890408
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 261
+[0.8512717811783241, 0.41462976276060387, 0.31131679846633153]
+===> Average ACC on TESTSET is 0.85127178 in 0.0984709s for a batch
+
+ => Start train set for EPOCH 264
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.85713461
+===> Average TOT LOSS-loss on validation set is 52.87531356
+===> Average HORIZON ACC on val is 0.9883138
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 261
+[0.8632583829721697, 0.39494967649173257, 0.2875029954469212]
+===> Average ACC on TESTSET is 0.86325838 in 0.0986233s for a batch
+Best model copied
+
+ => Start train set for EPOCH 265
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.87087069
+===> Average TOT LOSS-loss on validation set is 52.98742326
+===> Average HORIZON ACC on val is 0.98900282
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8443410658655972, 0.4179547088425593, 0.3171579199616591]
+===> Average ACC on TESTSET is 0.84434107 in 0.0984674s for a batch
+
+ => Start train set for EPOCH 266
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.20369880
+===> Average TOT LOSS-loss on validation set is 53.43425020
+===> Average HORIZON ACC on val is 0.98899197
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8536060901715086, 0.41292235801581595, 0.3111670261202979]
+===> Average ACC on TESTSET is 0.85360609 in 0.098719s for a batch
+
+ => Start train set for EPOCH 267
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.73300212
+===> Average TOT LOSS-loss on validation set is 52.62366600
+===> Average HORIZON ACC on val is 0.98823242
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8571198563897164, 0.4056434219985622, 0.3026899113347713]
+===> Average ACC on TESTSET is 0.85711986 in 0.0985632s for a batch
+
+ => Start train set for EPOCH 268
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.08550069
+===> Average TOT LOSS-loss on validation set is 53.41034413
+===> Average HORIZON ACC on val is 0.98921984
+===> Average LINE ACC on val is 0.98993056
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8557703005717024, 0.40591301222142345, 0.3018511861969808]
+===> Average ACC on TESTSET is 0.8557703 in 0.098456s for a batch
+
+ => Start train set for EPOCH 269
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.99145661
+===> Average TOT LOSS-loss on validation set is 52.67872848
+===> Average HORIZON ACC on val is 0.98957791
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8625630113655807, 0.4014198418404026, 0.2962197459861017]
+===> Average ACC on TESTSET is 0.86256301 in 0.0986367s for a batch
+
+ => Start train set for EPOCH 270
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.82173979
+===> Average TOT LOSS-loss on validation set is 57.43318267
+===> Average HORIZON ACC on val is 0.9875434
+===> Average LINE ACC on val is 0.99097222
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8483036142206707, 0.4202911574406902, 0.32117181883537055]
+===> Average ACC on TESTSET is 0.84830361 in 0.0987043s for a batch
+
+ => Start train set for EPOCH 271
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.06315333
+===> Average TOT LOSS-loss on validation set is 54.46705161
+===> Average HORIZON ACC on val is 0.9886122
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8569492228954829, 0.41229331416247306, 0.3105679367361618]
+===> Average ACC on TESTSET is 0.85694922 in 0.0986673s for a batch
+
+ => Start train set for EPOCH 272
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.50971662
+===> Average TOT LOSS-loss on validation set is 53.68616801
+===> Average HORIZON ACC on val is 0.98895399
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8411097274999151, 0.4315240833932423, 0.33546010064701726]
+===> Average ACC on TESTSET is 0.84110973 in 0.0983996s for a batch
+
+ => Start train set for EPOCH 273
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.12856623
+===> Average TOT LOSS-loss on validation set is 53.52154069
+===> Average HORIZON ACC on val is 0.98848741
+===> Average LINE ACC on val is 0.99131944
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8608807469788775, 0.3989935298346513, 0.2936137071651094]
+===> Average ACC on TESTSET is 0.86088075 in 0.0986938s for a batch
+
+ => Start train set for EPOCH 274
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.65220959
+===> Average TOT LOSS-loss on validation set is 53.31352856
+===> Average HORIZON ACC on val is 0.98864475
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 264
+[0.8644415845058356, 0.3900071890726096, 0.28142223819793943]
+===> Average ACC on TESTSET is 0.86444158 in 0.098744s for a batch
+Best model copied
+
+ => Start train set for EPOCH 275
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.67607944
+===> Average TOT LOSS-loss on validation set is 53.86726264
+===> Average HORIZON ACC on val is 0.98884549
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 274
+[0.8519837347232201, 0.41220345075485265, 0.31242511382698346]
+===> Average ACC on TESTSET is 0.85198373 in 0.0987566s for a batch
+
+ => Start train set for EPOCH 276
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.46670293
+===> Average TOT LOSS-loss on validation set is 53.51814331
+===> Average HORIZON ACC on val is 0.98887804
+===> Average LINE ACC on val is 0.99027778
+===> Last best TOT LOSS-loss was inf in epoch 274
+[0.8448379891136909, 0.4391624730409777, 0.3402827701893135]
+===> Average ACC on TESTSET is 0.84483799 in 0.0986822s for a batch
+
+ => Start train set for EPOCH 277
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.90920421
+===> Average TOT LOSS-loss on validation set is 53.06716079
+===> Average HORIZON ACC on val is 0.98928494
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 274
+[0.8574777053164886, 0.40914809489575843, 0.3048166786484551]
+===> Average ACC on TESTSET is 0.85747771 in 0.098573s for a batch
+
+ => Start train set for EPOCH 278
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.42080411
+===> Average TOT LOSS-loss on validation set is 55.03911280
+===> Average HORIZON ACC on val is 0.98885634
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 274
+[0.8664923958440309, 0.3903666427030913, 0.2828001437814527]
+===> Average ACC on TESTSET is 0.8664924 in 0.098568s for a batch
+Best model copied
+
+ => Start train set for EPOCH 279
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.75945167
+===> Average TOT LOSS-loss on validation set is 53.78698309
+===> Average HORIZON ACC on val is 0.98837891
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8485983448016158, 0.4163371675053918, 0.3143421998562198]
+===> Average ACC on TESTSET is 0.84859834 in 0.0984152s for a batch
+
+ => Start train set for EPOCH 280
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.64604797
+===> Average TOT LOSS-loss on validation set is 54.95118066
+===> Average HORIZON ACC on val is 0.98854709
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8409840257094926, 0.4311646297627606, 0.33225497244188906]
+===> Average ACC on TESTSET is 0.84098403 in 0.0986643s for a batch
+
+ => Start train set for EPOCH 281
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.95206222
+===> Average TOT LOSS-loss on validation set is 57.25092066
+===> Average HORIZON ACC on val is 0.98958876
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8512541294375421, 0.41022645578720346, 0.3090402588066148]
+===> Average ACC on TESTSET is 0.85125413 in 0.0984628s for a batch
+
+ => Start train set for EPOCH 282
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.93407355
+===> Average TOT LOSS-loss on validation set is 53.44042817
+===> Average HORIZON ACC on val is 0.98963216
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.857270163636983, 0.40402588066139467, 0.30023364485981424]
+===> Average ACC on TESTSET is 0.85727016 in 0.098723s for a batch
+
+ => Start train set for EPOCH 283
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.95847623
+===> Average TOT LOSS-loss on validation set is 55.01333907
+===> Average HORIZON ACC on val is 0.98931749
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8514729040429962, 0.41238317757009346, 0.31005871075964586]
+===> Average ACC on TESTSET is 0.8514729 in 0.0988074s for a batch
+
+ => Start train set for EPOCH 284
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.65428518
+===> Average TOT LOSS-loss on validation set is 53.44957966
+===> Average HORIZON ACC on val is 0.98920356
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8494980486802911, 0.42092020129403307, 0.3197040498442376]
+===> Average ACC on TESTSET is 0.84949805 in 0.0995263s for a batch
+
+ => Start train set for EPOCH 285
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.95115526
+===> Average TOT LOSS-loss on validation set is 52.55124133
+===> Average HORIZON ACC on val is 0.98884006
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8512787348943899, 0.41975197699496763, 0.31592978672418015]
+===> Average ACC on TESTSET is 0.85127873 in 0.0986733s for a batch
+
+ => Start train set for EPOCH 286
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.90833229
+===> Average TOT LOSS-loss on validation set is 52.56933642
+===> Average HORIZON ACC on val is 0.98923069
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8608679093492176, 0.4030373831775701, 0.2984363767074057]
+===> Average ACC on TESTSET is 0.86086791 in 0.0986754s for a batch
+
+ => Start train set for EPOCH 287
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.07306522
+===> Average TOT LOSS-loss on validation set is 53.13398432
+===> Average HORIZON ACC on val is 0.98877496
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8536970233816008, 0.41975197699496763, 0.3169182842080049]
+===> Average ACC on TESTSET is 0.85369702 in 0.0984822s for a batch
+
+ => Start train set for EPOCH 288
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.03203667
+===> Average TOT LOSS-loss on validation set is 52.52996199
+===> Average HORIZON ACC on val is 0.98919271
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8460623780425177, 0.4253235082674335, 0.32530553558591013]
+===> Average ACC on TESTSET is 0.84606238 in 0.0985543s for a batch
+
+ => Start train set for EPOCH 289
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 32.05816947
+===> Average TOT LOSS-loss on validation set is 59.67877039
+===> Average HORIZON ACC on val is 0.98836263
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8416237675875526, 0.4397016534867002, 0.341391085549965]
+===> Average ACC on TESTSET is 0.84162377 in 0.0993852s for a batch
+
+ => Start train set for EPOCH 290
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 47.59530357
+===> Average TOT LOSS-loss on validation set is 57.49197538
+===> Average HORIZON ACC on val is 0.98874783
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8398644774228885, 0.446980589503954, 0.3486101126288047]
+===> Average ACC on TESTSET is 0.83986448 in 0.0988064s for a batch
+
+ => Start train set for EPOCH 291
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 33.72835630
+===> Average TOT LOSS-loss on validation set is 54.25591393
+===> Average HORIZON ACC on val is 0.98939345
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8480260004792712, 0.42568296189791516, 0.3280913012221429]
+===> Average ACC on TESTSET is 0.848026 in 0.0985948s for a batch
+
+ => Start train set for EPOCH 292
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 30.67026372
+===> Average TOT LOSS-loss on validation set is 53.50641540
+===> Average HORIZON ACC on val is 0.98898112
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8536034156653312, 0.41912293314162474, 0.31913491492930834]
+===> Average ACC on TESTSET is 0.85360342 in 0.0996676s for a batch
+
+ => Start train set for EPOCH 293
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 28.89833501
+===> Average TOT LOSS-loss on validation set is 52.99376107
+===> Average HORIZON ACC on val is 0.98919271
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8457628333504487, 0.42298705966930267, 0.3247064462017738]
+===> Average ACC on TESTSET is 0.84576283 in 0.0986992s for a batch
+
+ => Start train set for EPOCH 294
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 29.11825409
+===> Average TOT LOSS-loss on validation set is 54.30806008
+===> Average HORIZON ACC on val is 0.98903537
+===> Average LINE ACC on val is 0.99131944
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8548903880387541, 0.4116642703091301, 0.30721303618499946]
+===> Average ACC on TESTSET is 0.85489039 in 0.0986501s for a batch
+
+ => Start train set for EPOCH 295
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 26.31625514
+===> Average TOT LOSS-loss on validation set is 53.68338695
+===> Average HORIZON ACC on val is 0.98923069
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8490476618397164, 0.4210100647016535, 0.3188353702372402]
+===> Average ACC on TESTSET is 0.84904766 in 0.0986541s for a batch
+
+ => Start train set for EPOCH 296
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 29.40917168
+===> Average TOT LOSS-loss on validation set is 76.17239188
+===> Average HORIZON ACC on val is 0.98936632
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8149760578206833, 0.47519769949676494, 0.38815001198178783]
+===> Average ACC on TESTSET is 0.81497606 in 0.0985131s for a batch
+
+ => Start train set for EPOCH 297
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 33.40479320
+===> Average TOT LOSS-loss on validation set is 57.15420953
+===> Average HORIZON ACC on val is 0.98876411
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8507550665845044, 0.42568296189791516, 0.32254972441888413]
+===> Average ACC on TESTSET is 0.85075507 in 0.0985975s for a batch
+
+ => Start train set for EPOCH 298
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 25.08107553
+===> Average TOT LOSS-loss on validation set is 55.66436780
+===> Average HORIZON ACC on val is 0.98890516
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8474440279346799, 0.42819913731128684, 0.3253654445243239]
+===> Average ACC on TESTSET is 0.84744403 in 0.098723s for a batch
+
+ => Start train set for EPOCH 299
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.13358745
+===> Average TOT LOSS-loss on validation set is 54.59926059
+===> Average HORIZON ACC on val is 0.98913845
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8559034909794271, 0.40411574406901507, 0.3011023244668114]
+===> Average ACC on TESTSET is 0.85590349 in 0.0984922s for a batch
+
+ => Start train set for EPOCH 300
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.05094288
+===> Average TOT LOSS-loss on validation set is 57.61839653
+===> Average HORIZON ACC on val is 0.9889974
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.862349585772483, 0.39701653486700217, 0.2889707644380545]
+===> Average ACC on TESTSET is 0.86234959 in 0.0985481s for a batch
+
+ => Start train set for EPOCH 301
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.08140296
+===> Average TOT LOSS-loss on validation set is 56.55828468
+===> Average HORIZON ACC on val is 0.98897569
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8547042424086801, 0.411843997124371, 0.30697340043134497]
+===> Average ACC on TESTSET is 0.85470424 in 0.0985813s for a batch
+
+ => Start train set for EPOCH 302
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.57715337
+===> Average TOT LOSS-loss on validation set is 54.60044609
+===> Average HORIZON ACC on val is 0.98872613
+===> Average LINE ACC on val is 0.99131944
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8525213104652323, 0.41543853342918763, 0.31446201773304694]
+===> Average ACC on TESTSET is 0.85252131 in 0.098786s for a batch
+
+ => Start train set for EPOCH 303
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.41329294
+===> Average TOT LOSS-loss on validation set is 57.98961583
+===> Average HORIZON ACC on val is 0.98898655
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8535766706035388, 0.4139108554996406, 0.30963934819075023]
+===> Average ACC on TESTSET is 0.85357667 in 0.0987498s for a batch
+
+ => Start train set for EPOCH 304
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.94461747
+===> Average TOT LOSS-loss on validation set is 53.33819686
+===> Average HORIZON ACC on val is 0.98879123
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8386652288521429, 0.44302659956865564, 0.3426791277258575]
+===> Average ACC on TESTSET is 0.83866523 in 0.0987842s for a batch
+
+ => Start train set for EPOCH 305
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.64114176
+===> Average TOT LOSS-loss on validation set is 54.31391869
+===> Average HORIZON ACC on val is 0.9893826
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8473381174899868, 0.4141804457225018, 0.3135633836568426]
+===> Average ACC on TESTSET is 0.84733812 in 0.0988631s for a batch
+
+ => Start train set for EPOCH 306
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.99861632
+===> Average TOT LOSS-loss on validation set is 56.14154619
+===> Average HORIZON ACC on val is 0.98851454
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8608491878059612, 0.3984543493889288, 0.29397316079559144]
+===> Average ACC on TESTSET is 0.86084919 in 0.0987908s for a batch
+
+ => Start train set for EPOCH 307
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.97344058
+===> Average TOT LOSS-loss on validation set is 63.65105682
+===> Average HORIZON ACC on val is 0.98866645
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8505838981890375, 0.4178648454349389, 0.3148514258327352]
+===> Average ACC on TESTSET is 0.8505839 in 0.0989153s for a batch
+
+ => Start train set for EPOCH 308
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.36143909
+===> Average TOT LOSS-loss on validation set is 56.02079505
+===> Average HORIZON ACC on val is 0.98891059
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8620441571668195, 0.3903666427030913, 0.2843577761802066]
+===> Average ACC on TESTSET is 0.86204416 in 0.0988914s for a batch
+
+ => Start train set for EPOCH 309
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.08831920
+===> Average TOT LOSS-loss on validation set is 62.81092930
+===> Average HORIZON ACC on val is 0.98844944
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8571621135873466, 0.4057332854061826, 0.30334890965732164]
+===> Average ACC on TESTSET is 0.85716211 in 0.0989828s for a batch
+
+ => Start train set for EPOCH 310
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.40737953
+===> Average TOT LOSS-loss on validation set is 54.80464967
+===> Average HORIZON ACC on val is 0.9886339
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8486710913696879, 0.4180445722501797, 0.3150311526479761]
+===> Average ACC on TESTSET is 0.84867109 in 0.0984858s for a batch
+
+ => Start train set for EPOCH 311
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.19579545
+===> Average TOT LOSS-loss on validation set is 53.94786921
+===> Average HORIZON ACC on val is 0.98860135
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8552161428913745, 0.4073508267433501, 0.30733285406182653]
+===> Average ACC on TESTSET is 0.85521614 in 0.09862s for a batch
+
+ => Start train set for EPOCH 312
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.84803819
+===> Average TOT LOSS-loss on validation set is 53.36588714
+===> Average HORIZON ACC on val is 0.98894857
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8631407047002839, 0.39602803738317754, 0.28950994488377757]
+===> Average ACC on TESTSET is 0.8631407 in 0.0985609s for a batch
+
+ => Start train set for EPOCH 313
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.71289125
+===> Average TOT LOSS-loss on validation set is 54.03375172
+===> Average HORIZON ACC on val is 0.98836806
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8615306519804189, 0.3994428468727534, 0.2951713395638641]
+===> Average ACC on TESTSET is 0.86153065 in 0.0985253s for a batch
+
+ => Start train set for EPOCH 314
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.56977849
+===> Average TOT LOSS-loss on validation set is 107.54986430
+===> Average HORIZON ACC on val is 0.988699
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.819258477114786, 0.47384974838245864, 0.38458543014617835]
+===> Average ACC on TESTSET is 0.81925848 in 0.0997003s for a batch
+
+ => Start train set for EPOCH 315
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 51.72353885
+===> Average TOT LOSS-loss on validation set is 56.61237916
+===> Average HORIZON ACC on val is 0.98748372
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8321784815651648, 0.44365564342199854, 0.34687275341481033]
+===> Average ACC on TESTSET is 0.83217848 in 0.0985195s for a batch
+
+ => Start train set for EPOCH 316
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 35.54922267
+===> Average TOT LOSS-loss on validation set is 53.64859496
+===> Average HORIZON ACC on val is 0.98859592
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8386657637533799, 0.44069015097052483, 0.34348789839444066]
+===> Average ACC on TESTSET is 0.83866576 in 0.0987408s for a batch
+
+ => Start train set for EPOCH 317
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 35.49680380
+===> Average TOT LOSS-loss on validation set is 54.18669751
+===> Average HORIZON ACC on val is 0.98873155
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8425999623429541, 0.4267613227893602, 0.32749221183800686]
+===> Average ACC on TESTSET is 0.84259996 in 0.0985491s for a batch
+
+ => Start train set for EPOCH 318
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 28.73984910
+===> Average TOT LOSS-loss on validation set is 54.57487426
+===> Average HORIZON ACC on val is 0.98902452
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8442314111122521, 0.4252336448598131, 0.3257848070932193]
+===> Average ACC on TESTSET is 0.84423141 in 0.098605s for a batch
+
+ => Start train set for EPOCH 319
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 25.81191182
+===> Average TOT LOSS-loss on validation set is 53.01065201
+===> Average HORIZON ACC on val is 0.98886719
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.841813122625038, 0.42774982027318476, 0.3290498442367611]
+===> Average ACC on TESTSET is 0.84181312 in 0.0997016s for a batch
+
+ => Start train set for EPOCH 320
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 25.80184354
+===> Average TOT LOSS-loss on validation set is 53.32056541
+===> Average HORIZON ACC on val is 0.98885634
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8545443069391663, 0.4089683680805176, 0.3065540378624499]
+===> Average ACC on TESTSET is 0.85454431 in 0.0991016s for a batch
+
+ => Start train set for EPOCH 321
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 29.23645404
+===> Average TOT LOSS-loss on validation set is 54.25376944
+===> Average HORIZON ACC on val is 0.98859049
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8582779175652965, 0.39746585190510425, 0.29322429906542125]
+===> Average ACC on TESTSET is 0.85827792 in 0.0992369s for a batch
+
+ => Start train set for EPOCH 322
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 29.92472737
+===> Average TOT LOSS-loss on validation set is 53.15818227
+===> Average HORIZON ACC on val is 0.98930664
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8546742879394728, 0.40797987059669305, 0.3044272705487663]
+===> Average ACC on TESTSET is 0.85467429 in 0.100244s for a batch
+
+ => Start train set for EPOCH 323
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 24.85787004
+===> Average TOT LOSS-loss on validation set is 55.19255337
+===> Average HORIZON ACC on val is 0.98931749
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8545614237787129, 0.40833932422717467, 0.30583513060148676]
+===> Average ACC on TESTSET is 0.85456142 in 0.0992707s for a batch
+
+ => Start train set for EPOCH 324
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.01550859
+===> Average TOT LOSS-loss on validation set is 53.72951401
+===> Average HORIZON ACC on val is 0.98761393
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8429385548252356, 0.4399712437095615, 0.3380361849988025]
+===> Average ACC on TESTSET is 0.84293855 in 0.0987558s for a batch
+
+ => Start train set for EPOCH 325
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.05117954
+===> Average TOT LOSS-loss on validation set is 61.79400422
+===> Average HORIZON ACC on val is 0.98879123
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8583779440964009, 0.40159956865564345, 0.2981368320153373]
+===> Average ACC on TESTSET is 0.85837794 in 0.0990022s for a batch
+
+ => Start train set for EPOCH 326
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.76452561
+===> Average TOT LOSS-loss on validation set is 67.16047684
+===> Average HORIZON ACC on val is 0.9894694
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8519928280442306, 0.40627246585190513, 0.30463695183321443]
+===> Average ACC on TESTSET is 0.85199283 in 0.0988136s for a batch
+
+ => Start train set for EPOCH 327
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.46782763
+===> Average TOT LOSS-loss on validation set is 54.71288829
+===> Average HORIZON ACC on val is 0.98924696
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8485100860977033, 0.4184040258806614, 0.3197340043134444]
+===> Average ACC on TESTSET is 0.84851009 in 0.0987111s for a batch
+
+ => Start train set for EPOCH 328
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.38118070
+===> Average TOT LOSS-loss on validation set is 52.75824254
+===> Average HORIZON ACC on val is 0.98924154
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8441388731984524, 0.4225377426312006, 0.3253055355859103]
+===> Average ACC on TESTSET is 0.84413887 in 0.0986379s for a batch
+
+ => Start train set for EPOCH 329
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.39341875
+===> Average TOT LOSS-loss on validation set is 53.93072530
+===> Average HORIZON ACC on val is 0.98936089
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.861161035226453, 0.3986340762041697, 0.29349388928828274]
+===> Average ACC on TESTSET is 0.86116104 in 0.0989206s for a batch
+
+ => Start train set for EPOCH 330
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.98511030
+===> Average TOT LOSS-loss on validation set is 52.85234148
+===> Average HORIZON ACC on val is 0.98920898
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8548561543596565, 0.4093278217109993, 0.3081116702612039]
+===> Average ACC on TESTSET is 0.85485615 in 0.0985054s for a batch
+
+ => Start train set for EPOCH 331
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.36830251
+===> Average TOT LOSS-loss on validation set is 52.63188437
+===> Average HORIZON ACC on val is 0.98919271
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8591845751600414, 0.4008806613946801, 0.29711838006230573]
+===> Average ACC on TESTSET is 0.85918458 in 0.0986965s for a batch
+
+ => Start train set for EPOCH 332
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.23172450
+===> Average TOT LOSS-loss on validation set is 52.97323113
+===> Average HORIZON ACC on val is 0.98894857
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8573300725753995, 0.40177929547088426, 0.2990354660915415]
+===> Average ACC on TESTSET is 0.85733007 in 0.098798s for a batch
+
+ => Start train set for EPOCH 333
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.33772021
+===> Average TOT LOSS-loss on validation set is 53.75985501
+===> Average HORIZON ACC on val is 0.98873155
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8531696107630665, 0.406901509705248, 0.30547567697100503]
+===> Average ACC on TESTSET is 0.85316961 in 0.0986847s for a batch
+
+ => Start train set for EPOCH 334
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.16423333
+===> Average TOT LOSS-loss on validation set is 65.70471047
+===> Average HORIZON ACC on val is 0.98885091
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8603281940022598, 0.3987239396117901, 0.2952911574406906]
+===> Average ACC on TESTSET is 0.86032819 in 0.0989009s for a batch
+
+ => Start train set for EPOCH 335
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.71183190
+===> Average TOT LOSS-loss on validation set is 54.49131706
+===> Average HORIZON ACC on val is 0.98884006
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.839286249186949, 0.4336808051761323, 0.33971363527438375]
+===> Average ACC on TESTSET is 0.83928625 in 0.0986652s for a batch
+
+ => Start train set for EPOCH 336
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.81949007
+===> Average TOT LOSS-loss on validation set is 59.99079077
+===> Average HORIZON ACC on val is 0.98868273
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8546443334702666, 0.39575844716031633, 0.29088785046729065]
+===> Average ACC on TESTSET is 0.85464433 in 0.0985909s for a batch
+
+ => Start train set for EPOCH 337
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.31923499
+===> Average TOT LOSS-loss on validation set is 51.91690322
+===> Average HORIZON ACC on val is 0.98921984
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8627004809831911, 0.3918943206326384, 0.2866343158399241]
+===> Average ACC on TESTSET is 0.86270048 in 0.0989564s for a batch
+
+ => Start train set for EPOCH 338
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.60553533
+===> Average TOT LOSS-loss on validation set is 53.23399153
+===> Average HORIZON ACC on val is 0.98911133
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8437537443086495, 0.4273005032350827, 0.3305775221663082]
+===> Average ACC on TESTSET is 0.84375374 in 0.0988507s for a batch
+
+ => Start train set for EPOCH 339
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.55271326
+===> Average TOT LOSS-loss on validation set is 51.82608656
+===> Average HORIZON ACC on val is 0.98902452
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.860638971620277, 0.39530913012221425, 0.2909777138749112]
+===> Average ACC on TESTSET is 0.86063897 in 0.098883s for a batch
+
+ => Start train set for EPOCH 340
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.73859548
+===> Average TOT LOSS-loss on validation set is 52.51214900
+===> Average HORIZON ACC on val is 0.98883464
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 278
+[0.8739114759850727, 0.3726635514018692, 0.2621016055595496]
+===> Average ACC on TESTSET is 0.87391148 in 0.0985627s for a batch
+Best model copied
+
+ => Start train set for EPOCH 341
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.74147341
+===> Average TOT LOSS-loss on validation set is 53.98016957
+===> Average HORIZON ACC on val is 0.98947483
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8695306348635753, 0.3813803019410496, 0.27324466810448117]
+===> Average ACC on TESTSET is 0.86953063 in 0.0986865s for a batch
+
+ => Start train set for EPOCH 342
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.06654278
+===> Average TOT LOSS-loss on validation set is 51.43914596
+===> Average HORIZON ACC on val is 0.98961046
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.860513804731093, 0.3887491013659238, 0.2828300982506591]
+===> Average ACC on TESTSET is 0.8605138 in 0.098837s for a batch
+
+ => Start train set for EPOCH 343
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 46.77231377
+===> Average TOT LOSS-loss on validation set is 69.98962503
+===> Average HORIZON ACC on val is 0.98744032
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.7583016671801748, 0.5895938173975557, 0.5145878265037145]
+===> Average ACC on TESTSET is 0.75830167 in 0.0983596s for a batch
+
+ => Start train set for EPOCH 344
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 50.02670207
+===> Average TOT LOSS-loss on validation set is 53.19938555
+===> Average HORIZON ACC on val is 0.9890842
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8523817012426836, 0.4162473040977714, 0.3122154325425363]
+===> Average ACC on TESTSET is 0.8523817 in 0.0996855s for a batch
+
+ => Start train set for EPOCH 345
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 34.66567697
+===> Average TOT LOSS-loss on validation set is 53.27343717
+===> Average HORIZON ACC on val is 0.98902452
+===> Average LINE ACC on val is 0.99097222
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8491792475437326, 0.42810927390366643, 0.3300083872513786]
+===> Average ACC on TESTSET is 0.84917925 in 0.0987728s for a batch
+
+ => Start train set for EPOCH 346
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 35.60765481
+===> Average TOT LOSS-loss on validation set is 58.12483040
+===> Average HORIZON ACC on val is 0.9890408
+===> Average LINE ACC on val is 0.99097222
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8309096958337617, 0.46198777857656365, 0.36427630002396416]
+===> Average ACC on TESTSET is 0.8309097 in 0.0988476s for a batch
+
+ => Start train set for EPOCH 347
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 28.08691571
+===> Average TOT LOSS-loss on validation set is 60.20192322
+===> Average HORIZON ACC on val is 0.98853624
+===> Average LINE ACC on val is 0.99097222
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8494910949642255, 0.41040618260244427, 0.30895039539899455]
+===> Average ACC on TESTSET is 0.84949109 in 0.0985187s for a batch
+
+ => Start train set for EPOCH 348
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.80261110
+===> Average TOT LOSS-loss on validation set is 58.78379531
+===> Average HORIZON ACC on val is 0.98908963
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8417623070076331, 0.43017613227893603, 0.3314462017733057]
+===> Average ACC on TESTSET is 0.84176231 in 0.098628s for a batch
+
+ => Start train set for EPOCH 349
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.28141527
+===> Average TOT LOSS-loss on validation set is 60.94963877
+===> Average HORIZON ACC on val is 0.98904622
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8565742571291618, 0.406901509705248, 0.30415768032590557]
+===> Average ACC on TESTSET is 0.85657426 in 0.0989489s for a batch
+
+ => Start train set for EPOCH 350
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.40211002
+===> Average TOT LOSS-loss on validation set is 59.85375607
+===> Average HORIZON ACC on val is 0.98942057
+===> Average LINE ACC on val is 0.99479167
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8636568843928647, 0.39324227174694465, 0.2881020848310571]
+===> Average ACC on TESTSET is 0.86365688 in 0.0987406s for a batch
+
+ => Start train set for EPOCH 351
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.93259557
+===> Average TOT LOSS-loss on validation set is 51.79133288
+===> Average HORIZON ACC on val is 0.9894694
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8582431489849716, 0.40213874910136593, 0.29939491972202337]
+===> Average ACC on TESTSET is 0.85824315 in 0.098657s for a batch
+
+ => Start train set for EPOCH 352
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 23.65003435
+===> Average TOT LOSS-loss on validation set is 58.53257850
+===> Average HORIZON ACC on val is 0.98868815
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8567951713395628, 0.4031272465851905, 0.29993410016774585]
+===> Average ACC on TESTSET is 0.85679517 in 0.0993939s for a batch
+
+ => Start train set for EPOCH 353
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.37994188
+===> Average TOT LOSS-loss on validation set is 61.28046721
+===> Average HORIZON ACC on val is 0.98875868
+===> Average LINE ACC on val is 0.99479167
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8634092251206722, 0.3942307692307692, 0.2876527677929557]
+===> Average ACC on TESTSET is 0.86340923 in 0.0987157s for a batch
+
+ => Start train set for EPOCH 354
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.24608175
+===> Average TOT LOSS-loss on validation set is 57.26021896
+===> Average HORIZON ACC on val is 0.98883464
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8688309840471055, 0.3838066139468009, 0.27615025161754214]
+===> Average ACC on TESTSET is 0.86883098 in 0.0986636s for a batch
+
+ => Start train set for EPOCH 355
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.84677589
+===> Average TOT LOSS-loss on validation set is 64.70339882
+===> Average HORIZON ACC on val is 0.98943685
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8655279689158168, 0.3882997843278217, 0.28142223819793954]
+===> Average ACC on TESTSET is 0.86552797 in 0.098833s for a batch
+
+ => Start train set for EPOCH 356
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.96449217
+===> Average TOT LOSS-loss on validation set is 60.79432683
+===> Average HORIZON ACC on val is 0.98960503
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8673931695251776, 0.3856937455068296, 0.2771387491013665]
+===> Average ACC on TESTSET is 0.86739317 in 0.0984316s for a batch
+
+ => Start train set for EPOCH 357
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.72276225
+===> Average TOT LOSS-loss on validation set is 52.69494697
+===> Average HORIZON ACC on val is 0.98925781
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8594568398890798, 0.39755571531272466, 0.2929547088425601]
+===> Average ACC on TESTSET is 0.85945684 in 0.0988976s for a batch
+
+ => Start train set for EPOCH 358
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.77944439
+===> Average TOT LOSS-loss on validation set is 72.60627165
+===> Average HORIZON ACC on val is 0.98968641
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8676921793160107, 0.39171459381739754, 0.2846273664030679]
+===> Average ACC on TESTSET is 0.86769218 in 0.0985672s for a batch
+
+ => Start train set for EPOCH 359
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.20955969
+===> Average TOT LOSS-loss on validation set is 52.99123178
+===> Average HORIZON ACC on val is 0.98876953
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8683041063298056, 0.3908159597411934, 0.2824107356817642]
+===> Average ACC on TESTSET is 0.86830411 in 0.0988187s for a batch
+
+ => Start train set for EPOCH 360
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.49243762
+===> Average TOT LOSS-loss on validation set is 68.95833393
+===> Average HORIZON ACC on val is 0.98805339
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8552091891753099, 0.41220345075485265, 0.3073628085310336]
+===> Average ACC on TESTSET is 0.85520919 in 0.0988863s for a batch
+
+ => Start train set for EPOCH 361
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.18380662
+===> Average TOT LOSS-loss on validation set is 52.26210255
+===> Average HORIZON ACC on val is 0.98873698
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8655001540515567, 0.3862329259525521, 0.2805236041217353]
+===> Average ACC on TESTSET is 0.86550015 in 0.098706s for a batch
+
+ => Start train set for EPOCH 362
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.25441301
+===> Average TOT LOSS-loss on validation set is 53.02313156
+===> Average HORIZON ACC on val is 0.98892687
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.866745939029815, 0.38362688713156, 0.27641984184040286]
+===> Average ACC on TESTSET is 0.86674594 in 0.0987861s for a batch
+
+ => Start train set for EPOCH 363
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.43840435
+===> Average TOT LOSS-loss on validation set is 51.50938310
+===> Average HORIZON ACC on val is 0.98965386
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8688502404915965, 0.3788641265276779, 0.2705787203450761]
+===> Average ACC on TESTSET is 0.86885024 in 0.0987571s for a batch
+
+ => Start train set for EPOCH 364
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 25.01802768
+===> Average TOT LOSS-loss on validation set is 55.42322524
+===> Average HORIZON ACC on val is 0.98909505
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8609882621272784, 0.4032171099928109, 0.2999341001677457]
+===> Average ACC on TESTSET is 0.86098826 in 0.0991462s for a batch
+
+ => Start train set for EPOCH 365
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 26.56000414
+===> Average TOT LOSS-loss on validation set is 54.09070924
+===> Average HORIZON ACC on val is 0.98883464
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8558376981274157, 0.41058590941768514, 0.30742271746944744]
+===> Average ACC on TESTSET is 0.8558377 in 0.0990032s for a batch
+
+ => Start train set for EPOCH 366
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.64911870
+===> Average TOT LOSS-loss on validation set is 53.06358611
+===> Average HORIZON ACC on val is 0.98884006
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8578344844407902, 0.40159956865564345, 0.29867601246106007]
+===> Average ACC on TESTSET is 0.85783448 in 0.0989901s for a batch
+
+ => Start train set for EPOCH 367
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.55501225
+===> Average TOT LOSS-loss on validation set is 53.68878798
+===> Average HORIZON ACC on val is 0.98847114
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8641120853445615, 0.39369158878504673, 0.29037862449077423]
+===> Average ACC on TESTSET is 0.86411209 in 0.0986637s for a batch
+
+ => Start train set for EPOCH 368
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.94945361
+===> Average TOT LOSS-loss on validation set is 52.60122706
+===> Average HORIZON ACC on val is 0.98830838
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8718355242887956, 0.3744608195542775, 0.2651569614186441]
+===> Average ACC on TESTSET is 0.87183552 in 0.0987273s for a batch
+
+ => Start train set for EPOCH 369
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.99660957
+===> Average TOT LOSS-loss on validation set is 54.25612337
+===> Average HORIZON ACC on val is 0.9887207
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8737724016637562, 0.37167505391804456, 0.2611131080757249]
+===> Average ACC on TESTSET is 0.8737724 in 0.0986041s for a batch
+
+ => Start train set for EPOCH 370
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.41407854
+===> Average TOT LOSS-loss on validation set is 53.59796643
+===> Average HORIZON ACC on val is 0.98890516
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8701479108897316, 0.3851545650611071, 0.2756709801102331]
+===> Average ACC on TESTSET is 0.87014791 in 0.098728s for a batch
+
+ => Start train set for EPOCH 371
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.88965823
+===> Average TOT LOSS-loss on validation set is 56.77639347
+===> Average HORIZON ACC on val is 0.98773872
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8683987838485505, 0.38147016534867, 0.27399352983465197]
+===> Average ACC on TESTSET is 0.86839878 in 0.0993201s for a batch
+
+ => Start train set for EPOCH 372
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.61377583
+===> Average TOT LOSS-loss on validation set is 53.74488902
+===> Average HORIZON ACC on val is 0.98917643
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 340
+[0.8765528182876289, 0.3654744787922358, 0.254163671219746]
+===> Average ACC on TESTSET is 0.87655282 in 0.0988759s for a batch
+Best model copied
+
+ => Start train set for EPOCH 373
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.91453086
+===> Average TOT LOSS-loss on validation set is 51.48376693
+===> Average HORIZON ACC on val is 0.98968641
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 372
+[0.8767694532881452, 0.36951833213515456, 0.2599149293074526]
+===> Average ACC on TESTSET is 0.87676945 in 0.0984898s for a batch
+Best model copied
+
+ => Start train set for EPOCH 374
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.36763928
+===> Average TOT LOSS-loss on validation set is 53.18829497
+===> Average HORIZON ACC on val is 0.98832465
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8730427963780735, 0.3745506829618979, 0.265786005271987]
+===> Average ACC on TESTSET is 0.8730428 in 0.0995629s for a batch
+
+ => Start train set for EPOCH 375
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.18237269
+===> Average TOT LOSS-loss on validation set is 55.26247338
+===> Average HORIZON ACC on val is 0.9886339
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8601554209030836, 0.398274622573688, 0.2949017493410034]
+===> Average ACC on TESTSET is 0.86015542 in 0.0987474s for a batch
+
+ => Start train set for EPOCH 376
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.21599208
+===> Average TOT LOSS-loss on validation set is 57.83134249
+===> Average HORIZON ACC on val is 0.98899197
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.868349038033618, 0.3794931703810209, 0.27123771866762575]
+===> Average ACC on TESTSET is 0.86834904 in 0.0987358s for a batch
+
+ => Start train set for EPOCH 377
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.83514943
+===> Average TOT LOSS-loss on validation set is 52.12147479
+===> Average HORIZON ACC on val is 0.98929036
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8712578309540896, 0.37571890726096335, 0.2674634555475679]
+===> Average ACC on TESTSET is 0.87125783 in 0.0987803s for a batch
+
+ => Start train set for EPOCH 378
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.87638984
+===> Average TOT LOSS-loss on validation set is 59.40127513
+===> Average HORIZON ACC on val is 0.98911133
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8725843860189644, 0.3819194823867721, 0.27231607955907067]
+===> Average ACC on TESTSET is 0.87258439 in 0.0986343s for a batch
+
+ => Start train set for EPOCH 379
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.19462904
+===> Average TOT LOSS-loss on validation set is 51.28562156
+===> Average HORIZON ACC on val is 0.98918728
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8732161043784858, 0.37589863407620416, 0.2684819075005988]
+===> Average ACC on TESTSET is 0.8732161 in 0.0996719s for a batch
+
+ => Start train set for EPOCH 380
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.57762974
+===> Average TOT LOSS-loss on validation set is 50.91278748
+===> Average HORIZON ACC on val is 0.9891276
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8723329824381236, 0.3765276779295471, 0.26755331895518836]
+===> Average ACC on TESTSET is 0.87233298 in 0.0986108s for a batch
+
+ => Start train set for EPOCH 381
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.78118072
+===> Average TOT LOSS-loss on validation set is 53.52838043
+===> Average HORIZON ACC on val is 0.98931749
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8659403777686471, 0.3880301941049605, 0.28327941528876127]
+===> Average ACC on TESTSET is 0.86594038 in 0.0986661s for a batch
+
+ => Start train set for EPOCH 382
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.97163660
+===> Average TOT LOSS-loss on validation set is 51.66089145
+===> Average HORIZON ACC on val is 0.98780924
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8610711718188362, 0.39908339324227177, 0.2937934339803508]
+===> Average ACC on TESTSET is 0.86107117 in 0.0996131s for a batch
+
+ => Start train set for EPOCH 383
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.87313805
+===> Average TOT LOSS-loss on validation set is 49.88929959
+===> Average HORIZON ACC on val is 0.98917101
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8749796737530362, 0.37383177570093457, 0.26249101365923777]
+===> Average ACC on TESTSET is 0.87497967 in 0.0986894s for a batch
+
+ => Start train set for EPOCH 384
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.67324455
+===> Average TOT LOSS-loss on validation set is 51.32756092
+===> Average HORIZON ACC on val is 0.9894043
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8656702526445513, 0.3856038820992092, 0.2792655164150495]
+===> Average ACC on TESTSET is 0.86567025 in 0.0987999s for a batch
+
+ => Start train set for EPOCH 385
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.34747566
+===> Average TOT LOSS-loss on validation set is 53.06496006
+===> Average HORIZON ACC on val is 0.98851454
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8481447485536242, 0.4237958303378864, 0.3290198897675538]
+===> Average ACC on TESTSET is 0.84814475 in 0.0987698s for a batch
+
+ => Start train set for EPOCH 386
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.47943411
+===> Average TOT LOSS-loss on validation set is 52.21823614
+===> Average HORIZON ACC on val is 0.9890191
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8656520660025323, 0.38749101365923794, 0.28076323987538976]
+===> Average ACC on TESTSET is 0.86565207 in 0.0986937s for a batch
+
+ => Start train set for EPOCH 387
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.85746370
+===> Average TOT LOSS-loss on validation set is 51.83679513
+===> Average HORIZON ACC on val is 0.98906793
+===> Average LINE ACC on val is 0.99097222
+===> Last best TOT LOSS-loss was inf in epoch 373
+[0.8806672785936782, 0.3661035226455787, 0.25194704049844197]
+===> Average ACC on TESTSET is 0.88066728 in 0.0987573s for a batch
+Best model copied
+
+ => Start train set for EPOCH 388
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.46692890
+===> Average TOT LOSS-loss on validation set is 51.25094675
+===> Average HORIZON ACC on val is 0.98926866
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8711069888055866, 0.38066139468008625, 0.27168703570572794]
+===> Average ACC on TESTSET is 0.87110699 in 0.0989456s for a batch
+
+ => Start train set for EPOCH 389
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.32808922
+===> Average TOT LOSS-loss on validation set is 53.41819287
+===> Average HORIZON ACC on val is 0.98917643
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8634562964294245, 0.39387131560028754, 0.2894200814761568]
+===> Average ACC on TESTSET is 0.8634563 in 0.0988037s for a batch
+
+ => Start train set for EPOCH 390
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.97833231
+===> Average TOT LOSS-loss on validation set is 51.32849803
+===> Average HORIZON ACC on val is 0.98964301
+===> Average LINE ACC on val is 0.99027778
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.859363232172811, 0.40438533429187634, 0.30062305295950215]
+===> Average ACC on TESTSET is 0.85936323 in 0.0988026s for a batch
+
+ => Start train set for EPOCH 391
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.31859824
+===> Average TOT LOSS-loss on validation set is 50.06476645
+===> Average HORIZON ACC on val is 0.98920356
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8751043057409866, 0.3776060388209921, 0.2665947759405705]
+===> Average ACC on TESTSET is 0.87510431 in 0.0987817s for a batch
+
+ => Start train set for EPOCH 392
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.14355744
+===> Average TOT LOSS-loss on validation set is 50.67593275
+===> Average HORIZON ACC on val is 0.98905707
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8660965689295117, 0.38704169662113586, 0.28178169182842183]
+===> Average ACC on TESTSET is 0.86609657 in 0.0987141s for a batch
+
+ => Start train set for EPOCH 393
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.04646881
+===> Average TOT LOSS-loss on validation set is 52.17215985
+===> Average HORIZON ACC on val is 0.98921441
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8777665091917415, 0.3730230050323508, 0.26087347232207075]
+===> Average ACC on TESTSET is 0.87776651 in 0.0987289s for a batch
+
+ => Start train set for EPOCH 394
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.41365236
+===> Average TOT LOSS-loss on validation set is 50.61684990
+===> Average HORIZON ACC on val is 0.98893229
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.875718372359726, 0.3684399712437096, 0.25868679606997375]
+===> Average ACC on TESTSET is 0.87571837 in 0.0985741s for a batch
+
+ => Start train set for EPOCH 395
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.61566382
+===> Average TOT LOSS-loss on validation set is 50.23252177
+===> Average HORIZON ACC on val is 0.98920356
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8735894654410993, 0.36987778576563624, 0.2598849748382463]
+===> Average ACC on TESTSET is 0.87358947 in 0.0984183s for a batch
+
+ => Start train set for EPOCH 396
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.08052124
+===> Average TOT LOSS-loss on validation set is 50.28477972
+===> Average HORIZON ACC on val is 0.9893826
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8643966528020247, 0.4051042415528397, 0.2958303378864135]
+===> Average ACC on TESTSET is 0.86439665 in 0.0984583s for a batch
+
+ => Start train set for EPOCH 397
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.28881835
+===> Average TOT LOSS-loss on validation set is 50.90233115
+===> Average HORIZON ACC on val is 0.98784722
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8774685692033803, 0.36951833213515456, 0.2571291636712194]
+===> Average ACC on TESTSET is 0.87746857 in 0.0983844s for a batch
+
+ => Start train set for EPOCH 398
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.00287360
+===> Average TOT LOSS-loss on validation set is 51.22522189
+===> Average HORIZON ACC on val is 0.98936089
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8684736700215657, 0.38111071171818833, 0.275491253294992]
+===> Average ACC on TESTSET is 0.86847367 in 0.098624s for a batch
+
+ => Start train set for EPOCH 399
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.25092718
+===> Average TOT LOSS-loss on validation set is 51.82621645
+===> Average HORIZON ACC on val is 0.98967014
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8650936291123186, 0.38524442846872753, 0.27836688233884604]
+===> Average ACC on TESTSET is 0.86509363 in 0.0989861s for a batch
+
+ => Start train set for EPOCH 400
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.33941049
+===> Average TOT LOSS-loss on validation set is 51.80194240
+===> Average HORIZON ACC on val is 0.98930664
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8722227927835414, 0.3753594536304817, 0.26458782650371465]
+===> Average ACC on TESTSET is 0.87222279 in 0.0987177s for a batch
+
+ => Start train set for EPOCH 401
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.99995315
+===> Average TOT LOSS-loss on validation set is 51.15095791
+===> Average HORIZON ACC on val is 0.98918728
+===> Average LINE ACC on val is 0.99479167
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8790791568244835, 0.36116103522645576, 0.24838245866283204]
+===> Average ACC on TESTSET is 0.87907916 in 0.0988698s for a batch
+
+ => Start train set for EPOCH 402
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.98553130
+===> Average TOT LOSS-loss on validation set is 52.94936013
+===> Average HORIZON ACC on val is 0.98920356
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 387
+[0.8821131166341428, 0.3600826743350108, 0.24736400670980072]
+===> Average ACC on TESTSET is 0.88211312 in 0.0987949s for a batch
+Best model copied
+
+ => Start train set for EPOCH 403
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.88182866
+===> Average TOT LOSS-loss on validation set is 49.78367751
+===> Average HORIZON ACC on val is 0.98913303
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 402
+[0.8803570358768944, 0.36259884974838247, 0.250928588545411]
+===> Average ACC on TESTSET is 0.88035704 in 0.0987311s for a batch
+
+ => Start train set for EPOCH 404
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.60210579
+===> Average TOT LOSS-loss on validation set is 50.62885295
+===> Average HORIZON ACC on val is 0.98893229
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 402
+[0.8822318647084986, 0.3559489575844716, 0.24128324946081928]
+===> Average ACC on TESTSET is 0.88223186 in 0.0997193s for a batch
+Best model copied
+
+ => Start train set for EPOCH 405
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.38949547
+===> Average TOT LOSS-loss on validation set is 57.53027574
+===> Average HORIZON ACC on val is 0.98900825
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8637670740474489, 0.3904565061107117, 0.2837287323268641]
+===> Average ACC on TESTSET is 0.86376707 in 0.0986153s for a batch
+
+ => Start train set for EPOCH 406
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.95225922
+===> Average TOT LOSS-loss on validation set is 51.23439579
+===> Average HORIZON ACC on val is 0.98933377
+===> Average LINE ACC on val is 0.99479167
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8792743957755642, 0.36313803019410495, 0.2505691349149292]
+===> Average ACC on TESTSET is 0.8792744 in 0.0987868s for a batch
+
+ => Start train set for EPOCH 407
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.30360198
+===> Average TOT LOSS-loss on validation set is 51.69805401
+===> Average HORIZON ACC on val is 0.98859592
+===> Average LINE ACC on val is 0.99479167
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8810037314710188, 0.3641265276779295, 0.25224658519051035]
+===> Average ACC on TESTSET is 0.88100373 in 0.0995698s for a batch
+
+ => Start train set for EPOCH 408
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.33854002
+===> Average TOT LOSS-loss on validation set is 51.95364478
+===> Average HORIZON ACC on val is 0.98878038
+===> Average LINE ACC on val is 0.99479167
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8733027583786913, 0.3755391804457225, 0.26767313683201555]
+===> Average ACC on TESTSET is 0.87330276 in 0.0993677s for a batch
+
+ => Start train set for EPOCH 409
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 39.60095042
+===> Average TOT LOSS-loss on validation set is 62.55266452
+===> Average HORIZON ACC on val is 0.98783637
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8090033506213402, 0.48121854780733286, 0.3903067337646777]
+===> Average ACC on TESTSET is 0.80900335 in 0.100416s for a batch
+
+ => Start train set for EPOCH 410
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 37.43178090
+===> Average TOT LOSS-loss on validation set is 53.56931572
+===> Average HORIZON ACC on val is 0.98856337
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8637157235288075, 0.40195902228612507, 0.29918523843757566]
+===> Average ACC on TESTSET is 0.86371572 in 0.098388s for a batch
+
+ => Start train set for EPOCH 411
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 32.85981203
+===> Average TOT LOSS-loss on validation set is 52.77734507
+===> Average HORIZON ACC on val is 0.9887207
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8610182165964861, 0.39953271028037385, 0.29648933620896323]
+===> Average ACC on TESTSET is 0.86101822 in 0.0986727s for a batch
+
+ => Start train set for EPOCH 412
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 31.10641136
+===> Average TOT LOSS-loss on validation set is 52.54877990
+===> Average HORIZON ACC on val is 0.98887261
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8694290036287671, 0.39126527677929546, 0.28435777618020647]
+===> Average ACC on TESTSET is 0.869429 in 0.0995826s for a batch
+
+ => Start train set for EPOCH 413
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 28.45714856
+===> Average TOT LOSS-loss on validation set is 51.97576157
+===> Average HORIZON ACC on val is 0.98897027
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.871041730854812, 0.38102084831056793, 0.2734243949197223]
+===> Average ACC on TESTSET is 0.87104173 in 0.0985576s for a batch
+
+ => Start train set for EPOCH 414
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 25.55755763
+===> Average TOT LOSS-loss on validation set is 50.98525335
+===> Average HORIZON ACC on val is 0.98879123
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8712145039539864, 0.3786843997124371, 0.27189671699017537]
+===> Average ACC on TESTSET is 0.8712145 in 0.0986514s for a batch
+
+ => Start train set for EPOCH 415
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 24.00227284
+===> Average TOT LOSS-loss on validation set is 50.56724314
+===> Average HORIZON ACC on val is 0.98936089
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.875671301050974, 0.3732925952552121, 0.2635993290198904]
+===> Average ACC on TESTSET is 0.8756713 in 0.0983558s for a batch
+
+ => Start train set for EPOCH 416
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 22.96773178
+===> Average TOT LOSS-loss on validation set is 50.78767106
+===> Average HORIZON ACC on val is 0.98885634
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8744757967888797, 0.37392163910855497, 0.26581595974119365]
+===> Average ACC on TESTSET is 0.8744758 in 0.0986595s for a batch
+
+ => Start train set for EPOCH 417
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 21.66873087
+===> Average TOT LOSS-loss on validation set is 50.90865854
+===> Average HORIZON ACC on val is 0.98876953
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8646822900619606, 0.39998202731847593, 0.2973280613467533]
+===> Average ACC on TESTSET is 0.86468229 in 0.0984632s for a batch
+
+ => Start train set for EPOCH 418
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.76780369
+===> Average TOT LOSS-loss on validation set is 50.53542564
+===> Average HORIZON ACC on val is 0.98915473
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8757076743350082, 0.3691588785046729, 0.26036424634555516]
+===> Average ACC on TESTSET is 0.87570767 in 0.098466s for a batch
+
+ => Start train set for EPOCH 419
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 18.34536211
+===> Average TOT LOSS-loss on validation set is 51.76042252
+===> Average HORIZON ACC on val is 0.98916016
+===> Average LINE ACC on val is 0.99097222
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8735637901817804, 0.3703271028037383, 0.26066379103762355]
+===> Average ACC on TESTSET is 0.87356379 in 0.0982957s for a batch
+
+ => Start train set for EPOCH 420
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.67843200
+===> Average TOT LOSS-loss on validation set is 51.40290694
+===> Average HORIZON ACC on val is 0.98949653
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8812583444592795, 0.36035226455787206, 0.24730409777138754]
+===> Average ACC on TESTSET is 0.88125834 in 0.0987034s for a batch
+
+ => Start train set for EPOCH 421
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.53351395
+===> Average TOT LOSS-loss on validation set is 51.08473230
+===> Average HORIZON ACC on val is 0.98843859
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 404
+[0.8845549407757349, 0.35460100647016535, 0.24071411454588978]
+===> Average ACC on TESTSET is 0.88455494 in 0.098634s for a batch
+Best model copied
+
+ => Start train set for EPOCH 422
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.28050487
+===> Average TOT LOSS-loss on validation set is 50.59864280
+===> Average HORIZON ACC on val is 0.98905165
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 421
+[0.8797226430111943, 0.3627785765636233, 0.25200694943685636]
+===> Average ACC on TESTSET is 0.87972264 in 0.0989863s for a batch
+
+ => Start train set for EPOCH 423
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.83980216
+===> Average TOT LOSS-loss on validation set is 50.77607799
+===> Average HORIZON ACC on val is 0.98892687
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 421
+[0.8829015610557658, 0.356038820992092, 0.24179247543733504]
+===> Average ACC on TESTSET is 0.88290156 in 0.0988361s for a batch
+
+ => Start train set for EPOCH 424
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.70340818
+===> Average TOT LOSS-loss on validation set is 50.83256973
+===> Average HORIZON ACC on val is 0.98908963
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 421
+[0.8825046643387755, 0.3578360891445004, 0.2447280134196021]
+===> Average ACC on TESTSET is 0.88250466 in 0.0984962s for a batch
+
+ => Start train set for EPOCH 425
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.38326174
+===> Average TOT LOSS-loss on validation set is 51.56741696
+===> Average HORIZON ACC on val is 0.98898112
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 421
+[0.8873455205230887, 0.3491193386053199, 0.23436376707404716]
+===> Average ACC on TESTSET is 0.88734552 in 0.0987209s for a batch
+Best model copied
+
+ => Start train set for EPOCH 426
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.95502093
+===> Average TOT LOSS-loss on validation set is 50.99351834
+===> Average HORIZON ACC on val is 0.98881836
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8763656028550855, 0.3727534148094896, 0.26338964773544266]
+===> Average ACC on TESTSET is 0.8763656 in 0.0983905s for a batch
+
+ => Start train set for EPOCH 427
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.47592397
+===> Average TOT LOSS-loss on validation set is 50.95798954
+===> Average HORIZON ACC on val is 0.98930122
+===> Average LINE ACC on val is 0.99201389
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8790379694293226, 0.3643062544931704, 0.2540438533429192]
+===> Average ACC on TESTSET is 0.87903797 in 0.0982564s for a batch
+
+ => Start train set for EPOCH 428
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.57877869
+===> Average TOT LOSS-loss on validation set is 51.00565372
+===> Average HORIZON ACC on val is 0.98895942
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8837071223169353, 0.3569374550682962, 0.24424874191229315]
+===> Average ACC on TESTSET is 0.88370712 in 0.0988845s for a batch
+
+ => Start train set for EPOCH 429
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.18515931
+===> Average TOT LOSS-loss on validation set is 50.57065581
+===> Average HORIZON ACC on val is 0.98931749
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8837980555270268, 0.35208483105679367, 0.2385573927629999]
+===> Average ACC on TESTSET is 0.88379806 in 0.0986233s for a batch
+
+ => Start train set for EPOCH 430
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.92817716
+===> Average TOT LOSS-loss on validation set is 52.08558858
+===> Average HORIZON ACC on val is 0.98881293
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8799628136660818, 0.36152048885693744, 0.24802300503235009]
+===> Average ACC on TESTSET is 0.87996281 in 0.0986914s for a batch
+
+ => Start train set for EPOCH 431
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.98376504
+===> Average TOT LOSS-loss on validation set is 51.44967755
+===> Average HORIZON ACC on val is 0.98907878
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8804217589264313, 0.3580158159597412, 0.24553678408818555]
+===> Average ACC on TESTSET is 0.88042176 in 0.0984101s for a batch
+
+ => Start train set for EPOCH 432
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.95220596
+===> Average TOT LOSS-loss on validation set is 50.72658259
+===> Average HORIZON ACC on val is 0.98909505
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8857413517168167, 0.3469626168224299, 0.230619458423196]
+===> Average ACC on TESTSET is 0.88574135 in 0.0984093s for a batch
+
+ => Start train set for EPOCH 433
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.27693089
+===> Average TOT LOSS-loss on validation set is 50.91815636
+===> Average HORIZON ACC on val is 0.98905707
+===> Average LINE ACC on val is 0.99479167
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8739981299852799, 0.36996764917325664, 0.2591960220464896]
+===> Average ACC on TESTSET is 0.87399813 in 0.0986696s for a batch
+
+ => Start train set for EPOCH 434
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.61167977
+===> Average TOT LOSS-loss on validation set is 51.03052697
+===> Average HORIZON ACC on val is 0.98876411
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8752604969018508, 0.3797627606038821, 0.2690210879463217]
+===> Average ACC on TESTSET is 0.8752605 in 0.099245s for a batch
+
+ => Start train set for EPOCH 435
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.17041605
+===> Average TOT LOSS-loss on validation set is 50.31619383
+===> Average HORIZON ACC on val is 0.98856879
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8854674822840687, 0.3516355140186916, 0.23792834890965686]
+===> Average ACC on TESTSET is 0.88546748 in 0.0985949s for a batch
+
+ => Start train set for EPOCH 436
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.12922592
+===> Average TOT LOSS-loss on validation set is 50.54634711
+===> Average HORIZON ACC on val is 0.98848199
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 425
+[0.8874412678443044, 0.34588425593098493, 0.230379822669542]
+===> Average ACC on TESTSET is 0.88744127 in 0.0986928s for a batch
+Best model copied
+
+ => Start train set for EPOCH 437
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.38616433
+===> Average TOT LOSS-loss on validation set is 49.96057638
+===> Average HORIZON ACC on val is 0.98930664
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8745865213446967, 0.37104601006470167, 0.26120297148334565]
+===> Average ACC on TESTSET is 0.87458652 in 0.0987937s for a batch
+
+ => Start train set for EPOCH 438
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.59592709
+===> Average TOT LOSS-loss on validation set is 52.28901791
+===> Average HORIZON ACC on val is 0.98925239
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8809941032487746, 0.35828540618260246, 0.2452671938653242]
+===> Average ACC on TESTSET is 0.8809941 in 0.0984292s for a batch
+
+ => Start train set for EPOCH 439
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 20.23757003
+===> Average TOT LOSS-loss on validation set is 51.24338630
+===> Average HORIZON ACC on val is 0.98867187
+===> Average LINE ACC on val is 0.99409722
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8755504133716733, 0.36933860531991375, 0.2586268871315605]
+===> Average ACC on TESTSET is 0.87555041 in 0.0986024s for a batch
+
+ => Start train set for EPOCH 440
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.11256801
+===> Average TOT LOSS-loss on validation set is 52.23602177
+===> Average HORIZON ACC on val is 0.98845486
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8832615495874816, 0.3558590941768512, 0.24269110951353953]
+===> Average ACC on TESTSET is 0.88326155 in 0.0986989s for a batch
+
+ => Start train set for EPOCH 441
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.49783086
+===> Average TOT LOSS-loss on validation set is 50.81061022
+===> Average HORIZON ACC on val is 0.98893772
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8794311218376613, 0.36511502516175415, 0.2530853103283012]
+===> Average ACC on TESTSET is 0.87943112 in 0.0983187s for a batch
+
+ => Start train set for EPOCH 442
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.50789332
+===> Average TOT LOSS-loss on validation set is 50.64673303
+===> Average HORIZON ACC on val is 0.98854709
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8862035063845805, 0.35262401150251615, 0.23894680086268838]
+===> Average ACC on TESTSET is 0.88620351 in 0.0993391s for a batch
+
+ => Start train set for EPOCH 443
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.89335189
+===> Average TOT LOSS-loss on validation set is 49.78075056
+===> Average HORIZON ACC on val is 0.98878038
+===> Average LINE ACC on val is 0.99444444
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8853193146417443, 0.346333572969087, 0.23023005032350782]
+===> Average ACC on TESTSET is 0.88531931 in 0.0983329s for a batch
+
+ => Start train set for EPOCH 444
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.43855889
+===> Average TOT LOSS-loss on validation set is 52.24131964
+===> Average HORIZON ACC on val is 0.98887261
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8774835464379849, 0.36565420560747663, 0.2549125329499162]
+===> Average ACC on TESTSET is 0.87748355 in 0.0985535s for a batch
+
+ => Start train set for EPOCH 445
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.26526653
+===> Average TOT LOSS-loss on validation set is 51.66620901
+===> Average HORIZON ACC on val is 0.98941515
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8784624156995651, 0.36888928828181167, 0.2566798466331177]
+===> Average ACC on TESTSET is 0.87846242 in 0.0990445s for a batch
+
+ => Start train set for EPOCH 446
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.15015155
+===> Average TOT LOSS-loss on validation set is 50.38360834
+===> Average HORIZON ACC on val is 0.98917643
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8791519033925572, 0.3633177570093458, 0.2520369039060629]
+===> Average ACC on TESTSET is 0.8791519 in 0.0986457s for a batch
+
+ => Start train set for EPOCH 447
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.05421137
+===> Average TOT LOSS-loss on validation set is 51.27903148
+===> Average HORIZON ACC on val is 0.98910048
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8764506521515857, 0.3670021567217829, 0.25596093937215475]
+===> Average ACC on TESTSET is 0.87645065 in 0.0985389s for a batch
+
+ => Start train set for EPOCH 448
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.92804123
+===> Average TOT LOSS-loss on validation set is 50.13883990
+===> Average HORIZON ACC on val is 0.98842231
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8735017416384231, 0.3808411214953271, 0.26997963096093974]
+===> Average ACC on TESTSET is 0.87350174 in 0.0985035s for a batch
+
+ => Start train set for EPOCH 449
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.20569773
+===> Average TOT LOSS-loss on validation set is 52.68143392
+===> Average HORIZON ACC on val is 0.98846029
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8847619475540028, 0.35478073328540616, 0.2407141145458902]
+===> Average ACC on TESTSET is 0.88476195 in 0.0986972s for a batch
+
+ => Start train set for EPOCH 450
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.81382596
+===> Average TOT LOSS-loss on validation set is 49.78556110
+===> Average HORIZON ACC on val is 0.98958333
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8861970875697486, 0.3554097771387491, 0.24074406901509712]
+===> Average ACC on TESTSET is 0.88619709 in 0.0986615s for a batch
+
+ => Start train set for EPOCH 451
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.67424531
+===> Average TOT LOSS-loss on validation set is 49.05910201
+===> Average HORIZON ACC on val is 0.98925781
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8782939218102765, 0.36367721063982744, 0.25146776899113343]
+===> Average ACC on TESTSET is 0.87829392 in 0.098668s for a batch
+
+ => Start train set for EPOCH 452
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.76216061
+===> Average TOT LOSS-loss on validation set is 50.15735367
+===> Average HORIZON ACC on val is 0.98942057
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 436
+[0.8882265028585108, 0.3492092020129403, 0.23454349388928783]
+===> Average ACC on TESTSET is 0.8882265 in 0.0983929s for a batch
+Best model copied
+
+ => Start train set for EPOCH 453
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 16.02634450
+===> Average TOT LOSS-loss on validation set is 51.08556546
+===> Average HORIZON ACC on val is 0.9889974
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 452
+[0.8760671279654931, 0.3687994248741912, 0.2577881619937698]
+===> Average ACC on TESTSET is 0.87606713 in 0.09864s for a batch
+
+ => Start train set for EPOCH 454
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.95665792
+===> Average TOT LOSS-loss on validation set is 50.78992883
+===> Average HORIZON ACC on val is 0.98904622
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 452
+[0.8841789052069419, 0.35091660675772823, 0.23535226455787187]
+===> Average ACC on TESTSET is 0.88417891 in 0.0987068s for a batch
+
+ => Start train set for EPOCH 455
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.60457279
+===> Average TOT LOSS-loss on validation set is 50.84241305
+===> Average HORIZON ACC on val is 0.98937717
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 452
+[0.8898156944301797, 0.34372753414809487, 0.22561706206565965]
+===> Average ACC on TESTSET is 0.88981569 in 0.098429s for a batch
+Best model copied
+
+ => Start train set for EPOCH 456
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.05956109
+===> Average TOT LOSS-loss on validation set is 51.84835819
+===> Average HORIZON ACC on val is 0.98885091
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 455
+[0.8897980426893958, 0.3448957584471603, 0.22855260004792644]
+===> Average ACC on TESTSET is 0.88979804 in 0.09848s for a batch
+
+ => Start train set for EPOCH 457
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.30468725
+===> Average TOT LOSS-loss on validation set is 49.71661021
+===> Average HORIZON ACC on val is 0.98912218
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 455
+[0.8907934938892874, 0.3453450754852624, 0.22744428468727448]
+===> Average ACC on TESTSET is 0.89079349 in 0.0986098s for a batch
+Best model copied
+
+ => Start train set for EPOCH 458
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.88340350
+===> Average TOT LOSS-loss on validation set is 49.47861560
+===> Average HORIZON ACC on val is 0.98905707
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8840152254287774, 0.3580158159597412, 0.24421878744308637]
+===> Average ACC on TESTSET is 0.88401523 in 0.0984129s for a batch
+
+ => Start train set for EPOCH 459
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.25147676
+===> Average TOT LOSS-loss on validation set is 49.93204305
+===> Average HORIZON ACC on val is 0.98927951
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8889234791688049, 0.3431883537023724, 0.22690510424155186]
+===> Average ACC on TESTSET is 0.88892348 in 0.0986908s for a batch
+
+ => Start train set for EPOCH 460
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.74861728
+===> Average TOT LOSS-loss on validation set is 50.13743829
+===> Average HORIZON ACC on val is 0.9890408
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8862671596316433, 0.3472322070452912, 0.23088904864605744]
+===> Average ACC on TESTSET is 0.88626716 in 0.0986279s for a batch
+
+ => Start train set for EPOCH 461
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.93809369
+===> Average TOT LOSS-loss on validation set is 50.77072526
+===> Average HORIZON ACC on val is 0.989426
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8783597146622831, 0.3705966930265996, 0.2578181164629759]
+===> Average ACC on TESTSET is 0.87835971 in 0.0984358s for a batch
+
+ => Start train set for EPOCH 462
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 17.44251524
+===> Average TOT LOSS-loss on validation set is 49.80846925
+===> Average HORIZON ACC on val is 0.98914931
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8849833966656387, 0.3533429187634795, 0.2390666187395157]
+===> Average ACC on TESTSET is 0.8849834 in 0.0986035s for a batch
+
+ => Start train set for EPOCH 463
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.57125392
+===> Average TOT LOSS-loss on validation set is 50.66531366
+===> Average HORIZON ACC on val is 0.98898655
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8861457370511092, 0.3512760603882099, 0.23682003354900516]
+===> Average ACC on TESTSET is 0.88614574 in 0.0981285s for a batch
+
+ => Start train set for EPOCH 464
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.72589029
+===> Average TOT LOSS-loss on validation set is 50.55684281
+===> Average HORIZON ACC on val is 0.98893772
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.886413187669026, 0.34884974838245864, 0.23370476875149726]
+===> Average ACC on TESTSET is 0.88641319 in 0.0981687s for a batch
+
+ => Start train set for EPOCH 465
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.49458024
+===> Average TOT LOSS-loss on validation set is 50.65917002
+===> Average HORIZON ACC on val is 0.98866102
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8820992092020118, 0.3598130841121495, 0.24850227653965953]
+===> Average ACC on TESTSET is 0.88209921 in 0.0984766s for a batch
+
+ => Start train set for EPOCH 466
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.58712680
+===> Average TOT LOSS-loss on validation set is 50.96840821
+===> Average HORIZON ACC on val is 0.98958876
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8727801598712787, 0.38111071171818833, 0.27147735442128035]
+===> Average ACC on TESTSET is 0.87278016 in 0.0983837s for a batch
+
+ => Start train set for EPOCH 467
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.50984525
+===> Average TOT LOSS-loss on validation set is 50.64955533
+===> Average HORIZON ACC on val is 0.9886122
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.873655793194345, 0.3748202731847592, 0.265696141864367]
+===> Average ACC on TESTSET is 0.87365579 in 0.0989574s for a batch
+
+ => Start train set for EPOCH 468
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.15369439
+===> Average TOT LOSS-loss on validation set is 49.92657220
+===> Average HORIZON ACC on val is 0.98922526
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8862569965081611, 0.352803738317757, 0.2369997603642461]
+===> Average ACC on TESTSET is 0.886257 in 0.0983388s for a batch
+
+ => Start train set for EPOCH 469
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.75541702
+===> Average TOT LOSS-loss on validation set is 49.49168168
+===> Average HORIZON ACC on val is 0.98859049
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8839301761322763, 0.3575664989216391, 0.2434699257129166]
+===> Average ACC on TESTSET is 0.88393018 in 0.0993839s for a batch
+
+ => Start train set for EPOCH 470
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.27439858
+===> Average TOT LOSS-loss on validation set is 48.91973373
+===> Average HORIZON ACC on val is 0.989426
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8827656961418622, 0.3556793673616104, 0.24320033549005504]
+===> Average ACC on TESTSET is 0.8827657 in 0.0986901s for a batch
+
+ => Start train set for EPOCH 471
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.10533863
+===> Average TOT LOSS-loss on validation set is 49.94977180
+===> Average HORIZON ACC on val is 0.98937174
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 457
+[0.8909555689637465, 0.33968368080517614, 0.2216031631919474]
+===> Average ACC on TESTSET is 0.89095557 in 0.09831s for a batch
+Best model copied
+
+ => Start train set for EPOCH 472
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.72007837
+===> Average TOT LOSS-loss on validation set is 49.25630357
+===> Average HORIZON ACC on val is 0.98924154
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 471
+[0.8880424968333835, 0.34507548526240117, 0.22771387491013573]
+===> Average ACC on TESTSET is 0.8880425 in 0.0994439s for a batch
+
+ => Start train set for EPOCH 473
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.49067021
+===> Average TOT LOSS-loss on validation set is 51.70727226
+===> Average HORIZON ACC on val is 0.98927409
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 471
+[0.887616715449659, 0.3494787922358016, 0.23475317517373548]
+===> Average ACC on TESTSET is 0.88761672 in 0.0986707s for a batch
+
+ => Start train set for EPOCH 474
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 15.01561892
+===> Average TOT LOSS-loss on validation set is 49.82917784
+===> Average HORIZON ACC on val is 0.98889431
+===> Average LINE ACC on val is 0.99236111
+===> Last best TOT LOSS-loss was inf in epoch 471
+[0.8901799621717813, 0.34202012940330695, 0.22633596932662306]
+===> Average ACC on TESTSET is 0.89017996 in 0.0986369s for a batch
+
+ => Start train set for EPOCH 475
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.42631180
+===> Average TOT LOSS-loss on validation set is 50.77744621
+===> Average HORIZON ACC on val is 0.9890625
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 471
+[0.8804549228030538, 0.36754133716750537, 0.2584172058471122]
+===> Average ACC on TESTSET is 0.88045492 in 0.0985496s for a batch
+
+ => Start train set for EPOCH 476
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 13.99992070
+===> Average TOT LOSS-loss on validation set is 49.56424279
+===> Average HORIZON ACC on val is 0.98848741
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 471
+[0.8821382569922284, 0.35936376707404744, 0.2467948717948716]
+===> Average ACC on TESTSET is 0.88213826 in 0.098523s for a batch
+
+ => Start train set for EPOCH 477
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.51045088
+===> Average TOT LOSS-loss on validation set is 50.06680486
+===> Average HORIZON ACC on val is 0.98902452
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 471
+[0.8917151287186327, 0.3442667145938174, 0.22756410256410198]
+===> Average ACC on TESTSET is 0.89171513 in 0.0984743s for a batch
+Best model copied
+
+ => Start train set for EPOCH 478
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 13.79637594
+===> Average TOT LOSS-loss on validation set is 49.66758195
+===> Average HORIZON ACC on val is 0.98949653
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 477
+[0.867746739242066, 0.39387131560028754, 0.2904684878983957]
+===> Average ACC on TESTSET is 0.86774674 in 0.0984066s for a batch
+
+ => Start train set for EPOCH 479
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 13.93314740
+===> Average TOT LOSS-loss on validation set is 49.79950059
+===> Average HORIZON ACC on val is 0.98847114
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 477
+[0.8739713849234858, 0.38039180445722504, 0.27189671699017587]
+===> Average ACC on TESTSET is 0.87397138 in 0.0983645s for a batch
+
+ => Start train set for EPOCH 480
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.78627519
+===> Average TOT LOSS-loss on validation set is 52.30630459
+===> Average HORIZON ACC on val is 0.98916016
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 477
+[0.8818189209544348, 0.36358734723220704, 0.2514078600527205]
+===> Average ACC on TESTSET is 0.88181892 in 0.0985016s for a batch
+
+ => Start train set for EPOCH 481
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.48091934
+===> Average TOT LOSS-loss on validation set is 50.57104120
+===> Average HORIZON ACC on val is 0.98884549
+===> Average LINE ACC on val is 0.99340278
+===> Last best TOT LOSS-loss was inf in epoch 477
+[0.8821339777823409, 0.36736161035226456, 0.256350347471843]
+===> Average ACC on TESTSET is 0.88213398 in 0.0983513s for a batch
+
+ => Start train set for EPOCH 482
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.72071490
+===> Average TOT LOSS-loss on validation set is 49.72220041
+===> Average HORIZON ACC on val is 0.98855794
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 477
+[0.8652637277053138, 0.39324227174694465, 0.2883716750539185]
+===> Average ACC on TESTSET is 0.86526373 in 0.0984105s for a batch
+
+ => Start train set for EPOCH 483
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.65588046
+===> Average TOT LOSS-loss on validation set is 51.34550885
+===> Average HORIZON ACC on val is 0.98846571
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 477
+[0.8925672263873193, 0.3410316319194824, 0.22375988497483718]
+===> Average ACC on TESTSET is 0.89256723 in 0.0984328s for a batch
+Best model copied
+
+ => Start train set for EPOCH 484
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.79733227
+===> Average TOT LOSS-loss on validation set is 49.81390857
+===> Average HORIZON ACC on val is 0.98844401
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 483
+[0.8955637431104697, 0.3320452911574407, 0.2133357296908691]
+===> Average ACC on TESTSET is 0.89556374 in 0.0983755s for a batch
+Best model copied
+
+ => Start train set for EPOCH 485
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 14.11025133
+===> Average TOT LOSS-loss on validation set is 48.10748136
+===> Average HORIZON ACC on val is 0.98926866
+===> Average LINE ACC on val is 0.99375
+===> Last best TOT LOSS-loss was inf in epoch 484
+[0.8886068176371904, 0.3492990654205608, 0.2324766355140184]
+===> Average ACC on TESTSET is 0.88860682 in 0.0984425s for a batch
+
+ => Start train set for EPOCH 486
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 13.48343195
+===> Average TOT LOSS-loss on validation set is 49.81609259
+===> Average HORIZON ACC on val is 0.98945313
+===> Average LINE ACC on val is 0.99305556
+===> Last best TOT LOSS-loss was inf in epoch 484
+[0.8855445080620307, 0.35091660675772823, 0.23532231008866508]
+===> Average ACC on TESTSET is 0.88554451 in 0.0988356s for a batch
+
+ => Start train set for EPOCH 487
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
+===> Average TOT LOSS-loss on training set is 19.91236382
+===> Average TOT LOSS-loss on validation set is 66.05453622
+===> Average HORIZON ACC on val is 0.98605143
+===> Average LINE ACC on val is 0.99270833
+===> Last best TOT LOSS-loss was inf in epoch 484
+[0.8392311543596588, 0.44527318475916605, 0.3485801581595981]
+===> Average ACC on TESTSET is 0.83923115 in 0.0988107s for a batch
+
+ => Start train set for EPOCH 488
+Saving to:  Saved/Mod_erfnet_opt_adam_loss_area_lr_0.0001_batch_8_end2end_True_chol_False_lanes_4_pretrainFalse_clasTrue_mask0.3_flip_onFalse_activation_square
